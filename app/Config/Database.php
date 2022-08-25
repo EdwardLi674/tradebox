@@ -33,7 +33,7 @@ class Database extends \CodeIgniter\Database\Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => '',
+        'password' => 'svX528T4ksF_J#-',
         'database' => 'tradebox',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
@@ -86,7 +86,7 @@ class Database extends \CodeIgniter\Database\Config
     public function __construct()
     {
         parent::__construct();
-     
+
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that
         // we don't overwrite live data on accident.
@@ -115,4 +115,3 @@ class Database extends \CodeIgniter\Database\Config
 
 }
 
- 
