@@ -1,0 +1,406 @@
+CRITICAL - 2022-08-25 01:23:48 --> file_get_contents(): SSL: An existing connection was forcibly closed by the remote host.
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\xampp\\htdocs...', 2631, Array)
+#1 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php(2631): file_get_contents('https://min-api...', true)
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->coingraphdata()
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#4 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-08-25 01:28:06 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 01:28:06 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 01:28:06 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 01:28:06 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 01:28:58 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 05:59:43 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 05:59:43 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 05:59:43 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 05:59:44 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 05:59:44 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 05:59:44 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 05:59:44 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 05:59:44 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 05:59:44 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:06:44 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:06:58 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:06:58 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:06:58 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:00 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:00 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:00 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:08 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:08 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:08 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:17 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:17 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:17 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:18 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:18 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:07:19 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:08:19 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:08:19 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:08:19 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:09:15 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:09:21 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:09:22 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:09:22 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:18:21 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:18:26 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:18:34 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:18:45 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:18:56 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(24): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 24, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 06:20:04 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\Ajaxload.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\Ajaxload->fees_load()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\Ajaxload))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 08:12:33 --> Uncaught Error: Object of class stdClass could not be converted to string in C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php:573
+Stack trace:
+#0 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->withdraw()
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#4 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2022-08-25 08:44:49 --> Undefined variable: fee
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php(683): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 683, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->withdraw()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 08:45:33 --> Trying to get property 'balance' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php(684): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 684, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->withdraw()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 08:51:48 --> Trying to get property 'balance' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php(684): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 684, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->withdraw()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 08:55:37 --> Trying to get property 'balance' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php(684): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 684, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->withdraw()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 08:58:23 --> Trying to get property 'feetype' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php(570): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 570, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->withdraw()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 09:09:37 --> Trying to get property 'balance' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php(680): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 680, Array)
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->withdraw()
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-08-25 09:31:59 --> Undefined property: stdClass::$fees_type
+#0 C:\xampp\htdocs\tradebox\app\Views\website\tradebox_Default_Theme\confirm_withdraw.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 29, Array)
+#1 C:\xampp\htdocs\tradebox\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\tradebox\system\Common.php(1119): CodeIgniter\View\View->render('website/tradebo...', Array, true)
+#3 C:\xampp\htdocs\tradebox\app\Libraries\Home_layout.php(36): view('website/tradebo...', Array)
+#4 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php(830): App\Libraries\Home_layout->master(Array)
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->withdraw_confirm('15')
+#6 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#7 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-08-25 09:48:52 --> Undefined property: stdClass::$wallet_id
+#0 C:\xampp\htdocs\tradebox\app\Views\website\tradebox_Default_Theme\withdraw_details.php(44): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 44, Array)
+#1 C:\xampp\htdocs\tradebox\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\tradebox\system\Common.php(1119): CodeIgniter\View\View->render('website/tradebo...', Array, true)
+#3 C:\xampp\htdocs\tradebox\app\Libraries\Home_layout.php(36): view('website/tradebo...', Array)
+#4 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\HomeController.php(891): App\Libraries\Home_layout->master(Array)
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->withdraw_details('1')
+#6 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#7 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-08-25 10:16:02 --> Undefined property: stdClass::$wallet_id
+#0 C:\xampp\htdocs\tradebox\app\Modules\Finance\Views\Admin\withdraw\pending_withdraw_list.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 25, Array)
+#1 C:\xampp\htdocs\tradebox\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\tradebox\system\Common.php(1119): CodeIgniter\View\View->render('App\\Modules\\Fin...', Array, true)
+#3 C:\xampp\htdocs\tradebox\app\Libraries\Template.php(45): view('App\\Modules\\Fin...', Array)
+#4 C:\xampp\htdocs\tradebox\app\Modules\Finance\Controllers\Admin\FinanceController.php(344): App\Libraries\Template->admin_layout(Array)
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Finance\Controllers\Admin\FinanceController->pending_withdraw()
+#6 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Finance\Controllers\Admin\FinanceController))
+#7 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-08-25 10:28:17 --> Trying to get property 'blockchain_address' of non-object
+#0 C:\xampp\htdocs\tradebox\app\Modules\Finance\Views\Admin\withdraw\pending_withdraw_list.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 23, Array)
+#1 C:\xampp\htdocs\tradebox\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\tradebox\system\Common.php(1119): CodeIgniter\View\View->render('App\\Modules\\Fin...', Array, true)
+#3 C:\xampp\htdocs\tradebox\app\Libraries\Template.php(45): view('App\\Modules\\Fin...', Array)
+#4 C:\xampp\htdocs\tradebox\app\Modules\Finance\Controllers\Admin\FinanceController.php(344): App\Libraries\Template->admin_layout(Array)
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(926): App\Modules\Finance\Controllers\Admin\FinanceController->pending_withdraw()
+#6 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Finance\Controllers\Admin\FinanceController))
+#7 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#9 {main}

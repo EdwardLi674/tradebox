@@ -1,0 +1,76 @@
+CRITICAL - 2022-08-23 20:36:58 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\tradebox\system\Controller.php(130): CodeIgniter\Database\BaseConnection->query('SET SESSION sql...')
+#2 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(57): CodeIgniter\Controller->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#4 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-08-23 20:37:12 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\tradebox\system\Controller.php(130): CodeIgniter\Database\BaseConnection->query('SET SESSION sql...')
+#2 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(57): CodeIgniter\Controller->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#4 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-08-23 20:37:47 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\tradebox\system\Controller.php(130): CodeIgniter\Database\BaseConnection->query('SET SESSION sql...')
+#2 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(57): CodeIgniter\Controller->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#4 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-08-23 20:37:53 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\tradebox\system\Controller.php(130): CodeIgniter\Database\BaseConnection->query('SET SESSION sql...')
+#2 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(57): CodeIgniter\Controller->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#4 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-08-23 20:43:08 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\tradebox\system\Controller.php(130): CodeIgniter\Database\BaseConnection->query('SET SESSION sql...')
+#2 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(57): CodeIgniter\Controller->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#4 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-08-23 20:44:40 --> Table 'tradebox.dbt_security' doesn't exist
+#0 C:\xampp\htdocs\tradebox\system\Database\MySQLi\Connection.php(331): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(741): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(669): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\tradebox\system\Database\BaseBuilder.php(1860): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\tradebox\app\Libraries\Recaptcha.php(27): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(72): app\Libraries\Recaptcha->__construct()
+#6 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#8 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-08-23 20:44:48 --> Table 'tradebox.dbt_security' doesn't exist
+#0 C:\xampp\htdocs\tradebox\system\Database\MySQLi\Connection.php(331): mysqli->query('SELECT *\nFROM `...')
+#1 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(741): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(669): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\tradebox\system\Database\BaseBuilder.php(1860): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\tradebox\app\Libraries\Recaptcha.php(27): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(72): app\Libraries\Recaptcha->__construct()
+#6 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#8 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-08-23 23:37:23 --> Call to a member function getRow() on bool
+#0 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(72): app\Libraries\Recaptcha->__construct()
+#1 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#2 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
