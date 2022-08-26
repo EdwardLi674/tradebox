@@ -47,7 +47,7 @@ class Auth extends BaseController
 				if ($captcha == $oldCaptcha) {
 
 					if ($user->getRow()->status != 0) {
-						//store date to session 
+						//store date to session
 						$this->session->remove('user_id');
 						$this->session->set($sData);
 						//update database status
@@ -64,7 +64,7 @@ class Auth extends BaseController
 					}
 
 				} else {
-					
+
 					$this->session->setFlashdata('exception', 'Captcha is not Matched');
 					return redirect()->to(base_url('admin'));
 				}
@@ -100,7 +100,7 @@ class Auth extends BaseController
 			)
 		));
 
-		$data['captcha_word'] = $captcha['word'];
+		$data['captcha_word'] ??= $captcha['word'];
 		$data['captcha_image'] = $captcha['image'];
 		$this->session->set('captcha', $captcha['word']);
 		return view($this->BASE_VIEW . '\login', $data);
