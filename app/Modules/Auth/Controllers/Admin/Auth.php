@@ -100,7 +100,7 @@ class Auth extends BaseController
 			)
 		));
 
-		$data['captcha_word'] ??= $captcha['word'];
+		$data['captcha_word'] = $captcha['word'] ?? '';
 		$data['captcha_image'] = $captcha['image'];
 		$this->session->set('captcha', $captcha['word']);
 		return view($this->BASE_VIEW . '\login', $data);
