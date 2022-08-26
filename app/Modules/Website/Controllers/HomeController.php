@@ -18,6 +18,10 @@ class HomeController extends BaseController
         return $this->master->master($data);
     }
 
+    public function test() {
+        echo "tester";
+    }
+
     public function dafult_data(){
 
         $data['payment_gateway'] = $this->common_model->findAll('payment_gateway', array('status' => 1), 'id', 'asc');

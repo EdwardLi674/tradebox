@@ -404,3 +404,21 @@ CRITICAL - 2022-08-25 10:28:17 --> Trying to get property 'blockchain_address' o
 #7 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
 #8 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
 #9 {main}
+CRITICAL - 2022-08-25 23:50:57 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\tradebox\system\Controller.php(130): CodeIgniter\Database\BaseConnection->query('SET SESSION sql...')
+#2 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(57): CodeIgniter\Controller->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#4 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-08-25 23:51:13 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\tradebox\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\tradebox\system\Controller.php(130): CodeIgniter\Database\BaseConnection->query('SET SESSION sql...')
+#2 C:\xampp\htdocs\tradebox\app\Modules\Website\Controllers\BaseController.php(57): CodeIgniter\Controller->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#3 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(899): App\Modules\Website\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#4 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(407): CodeIgniter\CodeIgniter->createController()
+#5 C:\xampp\htdocs\tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#7 {main}

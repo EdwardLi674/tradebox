@@ -22,9 +22,6 @@
                     <dt class="col-6"><?php echo display('amount');?></dt>
                     <dd class="col-6"><?php echo esc($data->currency_symbol) .' '.esc($data->amount);?></dd>
 
-                    <dt class="col-6"><?php echo display('payment_method');?></dt>
-                    <dd class="col-6"><?php echo esc($data->method);?></dd>
-
                     <dt class="col-6"><?php echo display('fees');?></dt>
                     <dd class="col-6"><?php echo esc($data->fees_amount." ".$data->fee_type);?></dd>
 

@@ -3,7 +3,7 @@
 if ( ! function_exists('calc_fees'))
 {
     function calc_fees($amount, $fees, $type = "") {
-        return $type=="PERCENT"? (float)$amount*$fees/100 : ($fees>$amount?$amount:$fees);
+        return $type=="PERCENT"? (float)$amount*$fees/100 : ($fees);
     }
 }
 

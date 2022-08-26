@@ -15,10 +15,6 @@ class UserController extends BaseController
         return $this->template->admin_layout($data);
     }
 
-    public function test() {
-        echo base_url();
-    }
-
     public function ajax_list(){
         $list = $this->user_model->get_datatables();
 

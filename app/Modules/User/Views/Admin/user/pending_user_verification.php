@@ -54,16 +54,16 @@
                         <div class="col-sm-8">
                         <?php if ($user->document2) { ?>
                             <img width="50" height="50" src="<?php echo IMAGEPATH.$user->document2; ?>" class="img-responsive"/>
-                            <a href="<?php echo IMAGEPATH.$user->document2; ?>" class="btn btn-success" download="<?php echo $user->first_name."_".$user->user_id."_2"; ?>">Download File</a>	
+                            <a href="<?php echo IMAGEPATH.$user->document2; ?>" class="btn btn-success" download="<?php echo $user->first_name."_".$user->user_id."_2"; ?>">Download File</a>
                         <?php } ?>
                         </div>
                     </div>
                 	<div class="form-group row">
                         <label for="cid" class="col-sm-4 font-weight-600">Upload Document</label>
                         <div class="col-sm-8">
-                            <?php 
+                            <?php
                                 $date = date_create($user->date);
-                                echo date_format($date,"jS F Y");  
+                                echo date_format($date,"jS F Y");
                             ?>
                         </div>
                     </div>
@@ -153,9 +153,9 @@
                     <div class="form-group row">
                         <label for="cid" class="col-sm-4 font-weight-600">Registered Date</label>
                         <div class="col-sm-8">
-                            <?php 
+                            <?php
                                 $date = date_create($user->created);
-                                echo date_format($date,"jS F Y");  
+                                echo date_format($date,"jS F Y");
                             ?>
                         </div>
                     </div>

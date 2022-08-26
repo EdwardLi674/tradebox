@@ -2,7 +2,7 @@
 
 class Common_model
 {
-	
+
 	public function __construct()
   {
       $this->db = db_connect();
@@ -12,7 +12,7 @@ class Common_model
 
         $builder = $this->db->table($table);
         return  $builder->insert($data);
-    } 
+    }
 
 
     public function save_return_id($table, $data=[]){
@@ -38,7 +38,7 @@ class Common_model
  		return $resutl = $this->db->table($table)
 							 	  ->where($where)
 							 	  ->get()
-							 	  ->getRow(); 
+							 	  ->getRow();
     }
 
     public function read($table,$where = array(),$limit=null, $offset=null)
@@ -55,7 +55,7 @@ class Common_model
  		return $resutl = $this->db->table($table)
 							 	  ->where($where)
                   ->groupBy($groupBy)
-							 	  ->countAllResults(); 
+							 	  ->countAllResults();
     }
 
     public function findAllGroupBy($table, $where = array(), $groupBy = null, $serialized = null, $order = null){
@@ -94,7 +94,7 @@ class Common_model
 		        $query=$builder->get();
 		        return $data=$query->getResult();
   	}
-  
+
   //Send email via SMTP server in CodeIgniter
 	public function send_email($post=array()){
 
@@ -105,10 +105,12 @@ class Common_model
 
     $config['protocol'] = $emailq->protocol;
     $config['SMTPHost'] = $emailq->host;
+    $config['SMTPCrypto'] = "ssl";
     $config['SMTPPort'] = $emailq->port;
     $config['SMTPUser'] = $emailq->user;
     $config['SMTPPass'] = $emailq->password;
     $config['mailType'] = $emailq->mailtype;
+    $config['mailPath'] = "/usr/sbin/sendmail";
     $config['charset']  = $emailq->charset;
     $config['wordWrap'] = TRUE;
 
@@ -119,7 +121,7 @@ class Common_model
     $inemail->setTo($post['to']);
     $inemail->setSubject($post['subject']);
     $inemail->setMessage($htmlContent);
-    
+
 		//Send email
 		if($inemail->send()){
 			return 1;
@@ -137,10 +139,12 @@ class Common_model
         $config = Array(
           'protocol' => $emailq->protocol,
           'SMTPHost' => $emailq->host,
+          'SMTPCrypto' => 'ssl',
           'SMTPPort' => $emailq->port,
           'SMTPUser' => $emailq->user,
           'SMTPPass' => $emailq->password,
           'mailType' => $emailq->mailtype,
+          'mailPath' => '/usr/sbin/sendmail',
           'charset' =>  $emailq->charset,
           'wordWrap' => TRUE,
           'crlf' => "\r\n",
@@ -155,7 +159,7 @@ class Common_model
         $inemail->setSubject($post['subject']);
         $inemail->setMessage($htmlContent);
 
-     
+
         //Send email
         if($inemail->send()){
 
@@ -179,7 +183,7 @@ class Common_model
     //Email content
     $htmlContent = $message;
     $subject    = ($config['template_lang']=='en')?$templateemail->subject_en:$templateemail->subject_fr;
-    
+
     $data = array(
       'subject'  => $subject,
       'message'  => $message
@@ -195,12 +199,12 @@ class Common_model
 
       $message  = ($config['template_lang']=='en')?$templatesms->template_en:$templatesms->template_fr;
       $subject  = ($config['template_lang']=='en')?$templatesms->subject_en:$templatesms->subject_fr;
-      
+
       if (is_array($message_data) && sizeof($message_data) > 0){
 
           $message = $this->_template($message, $message_data);
       }
-      
+
       $data = array(
 
         'subject'  => $subject,
@@ -213,13 +217,13 @@ class Common_model
 	private function _template($template = null, $data = array())
   {
 
-    
+
       $newStr = $template;
 
       foreach ($data as $key => $value) {
 
         $newStr = str_replace("%$key%", $value, $newStr);
-      } 
-      return $newStr; 
+      }
+      return $newStr;
   }
 }

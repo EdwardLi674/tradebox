@@ -22,7 +22,7 @@
                       <td><?php echo esc($value->method); ?></td>
                       <td><?php echo esc($value->blockchain_address);?></td>
                       <td><?php echo esc($value->currency_symbol." ".$value->amount); ?></td>
-                      <td><?php echo esc($value->fees_amount); ?></td>
+                      <td><?php echo esc($value->fees_amount." ".$value->fee_type); ?></td>
                       <td class="text-center">
 
                           <?php if($value->status == 2){?>

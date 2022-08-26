@@ -42,7 +42,7 @@
                                     <td><div><strong><?php echo esc($withdraw->method);?></strong></div>
                                     <td><?php echo esc($withdraw->blockchain_address);?></td>
                                     <td><?php echo esc($withdraw->currency_symbol).' '.esc($withdraw->amount);?></td>
-                                    <td><?php echo esc($withdraw->fees_amount); ?></td>
+                                    <td><?php echo esc($withdraw->fees_amount).' '.esc($withdraw->fee_type); ?></td>
                                     <td>
                                         <?php
                                             if(esc($withdraw->status) == 1){

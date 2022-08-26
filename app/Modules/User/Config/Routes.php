@@ -17,5 +17,4 @@ $routes->group('backend', ['filter' => 'admin_filter', 'namespace' => 'App\Modul
 	$subroutes->add('user/verify-user', 'UserController::pending_user_verification_list');
 	$subroutes->add('user/pending-user-verification/(:any)', 'UserController::pending_user_verification/$1');
 	$subroutes->add('user/subscriber-list', 'UserController::subscriber_list');
-	$subroutes->add('user/test', 'UserController::test');
 });

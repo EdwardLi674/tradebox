@@ -78,7 +78,7 @@
 <p class="text-center text-white">
    You may send your questions via secure XX Messenger - address of the exchange:  ZeroFees
 </p>
-<div class="bg-white mx-auto" style="width: 200px; height: 200px">
- <img src="<?php echo base_url("public/assets/images/icons/QR_code.webp") ?>" class="rounded img-fluid" alt="...">
+<div class="bg-white mx-auto" style="width: 200px; height: 190px">
+ <img src="<?php echo base_url("public/assets/images/icons/QR_code.png") ?>" class="rounded img-fluid" alt="...">
 </div>
 
