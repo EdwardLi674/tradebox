@@ -34,6 +34,7 @@ class Database extends \CodeIgniter\Database\Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => 'svX528T4ksF_J#-',
+        // 'password' => '',
         'database' => 'tradebox',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',

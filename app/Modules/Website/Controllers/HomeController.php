@@ -696,29 +696,29 @@ class HomeController extends BaseController
 
                 // if($varify_media == 2){
 
-                //     /***************************
-                //     *      Email Verify SMTP
-                //     ***************************/
-                //     $post = array(
-                //         'title'        => $appSetting->title,
-                //         'to'           => $this->session->get('email'),
-                //         'amount'       => $crypto_coin." ".$this->request->getPost('amount'),
-                //         'varify_code'  => $varify_code
-                //     );
+                    /***************************
+                    *      Email Verify SMTP
+                    ***************************/
+                    $post = array(
+                        'title'        => $appSetting->title,
+                        'to'           => $this->session->get('email'),
+                        'amount'       => $crypto_coin." ".$this->request->getPost('amount'),
+                        'varify_code'  => $varify_code
+                    );
 
-                //     $config_var = array(
-                //         'template_name' => 'withdraw_verification',
-                //         'template_lang' => $this->langSet() == 'english'?'en':'fr',
-                //     );
-                //     $message    = $this->common_model->email_msg_generate($config_var, $post);
-                //     $send_email = array(
-                //         'title'         => $appSetting->title,
-                //         'to'            => $this->session->get('email'),
-                //         'subject'       => $message['subject'],
-                //         'message'       => $message['message'],
-                //     );
+                    $config_var = array(
+                        'template_name' => 'withdraw_verification',
+                        'template_lang' => $this->langSet() == 'english'?'en':'fr',
+                    );
+                    $message    = $this->common_model->email_msg_generate($config_var, $post);
+                    $send_email = array(
+                        'title'         => $appSetting->title,
+                        'to'            => $this->session->get('email'),
+                        'subject'       => $message['subject'],
+                        'message'       => $message['message'],
+                    );
 
-                //     $code_send = $this->common_model->send_email($send_email);
+                    $code_send = $this->common_model->send_email($send_email);
 
                 // } else {
 
@@ -752,7 +752,7 @@ class HomeController extends BaseController
 
                 // }
 
-                // if(@$code_send != NULL){
+                if(@$code_send != NULL){
 
                     // GET withdraw fees
                     // if($this->request->getPost('method')=='coinpayment' || $this->request->getPost('method')=='token'){
@@ -791,10 +791,10 @@ class HomeController extends BaseController
 
                     return  redirect()->to(base_url('withdraw-confirm/'.$result));
 
-                // } else {
-                //     $this->session->setFlashdata('exception', display('server_problem'));
-                //     return  redirect()->to(base_url('withdraw'));
-                // }
+                } else {
+                    $this->session->setFlashdata('exception', display('server_problem'));
+                    return  redirect()->to(base_url('withdraw'));
+                }
 
             } else {
                 $this->session->setFlashdata("exception", $this->validation->listErrors());
