@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Finance\Controllers\Admin;
 class FinanceController extends BaseController
 {
-    
+
     public function index()
     {
 
@@ -18,9 +18,9 @@ class FinanceController extends BaseController
         $data['monthly_fees']     = $this->dashboard_model->monthlyFees();
         $data['coin_market']      = $this->dashboard_model->coinTradeMarket();
 
-        
+
         $data['title']  = 'Dashboard';
-       
+
         $data['content'] = $this->BASE_VIEW . '\dashboard\home';
         return $this->template->admin_layout($data);
     }
@@ -86,7 +86,7 @@ class FinanceController extends BaseController
                 'balance' => $new_balance,
             );
             $this->common_model->update('dbt_balance', $newBalance, array('user_id' => $user_id, 'currency_symbol' => $csym));
-            //Log Data 
+            //Log Data
             $depositdata = array(
                 'user_id'            => $data->user_id,
                 'balance_id'         => $check_user_balance->id,
@@ -114,7 +114,7 @@ class FinanceController extends BaseController
             //Save new balance
             $balance_id = $this->common_model->save_return_id('dbt_balance', $balance);
 
-            //Log Data 
+            //Log Data
             $depositdata = array(
                 'user_id'            => $data->user_id,
                 'balance_id'         => $balance_id,
@@ -130,7 +130,7 @@ class FinanceController extends BaseController
 
         $userdata   = $this->common_model->findById('dbt_user', array('user_id' => $user_id));
         $set        = $this->common_model->findById('sms_email_send_setup',array('method' => 'email'));
-        $appSetting = $this->template->setting_data();     
+        $appSetting = $this->template->setting_data();
 
         #-----------------------------------------------------
         if($set->deposit != NULL){
@@ -145,8 +145,8 @@ class FinanceController extends BaseController
                 'new_balance'=> $new_balance,
                 'date'       => date('d F Y')
             );
-            
-            $config_var = array( 
+
+            $config_var = array(
                 'template_name' => 'deposit_success',
                 'template_lang' => $appSetting->language == 'english'?'en':'fr',
             );
@@ -159,7 +159,7 @@ class FinanceController extends BaseController
                 'message' => $message['message'],
             );
 
-           
+
 
             $send_email = $this->common_model->send_email($send_email);
 
@@ -175,22 +175,22 @@ class FinanceController extends BaseController
                         'status'            => '0'
                     );
                 //notification save
-                $this->common_model->save('notifications',  $n);   
+                $this->common_model->save('notifications',  $n);
             }
 
-           
+
             #------------------------------
             #   SMS Sending
             #------------------------------
 
-            $template = array( 
+            $template = array(
                 'name'       => $userdata->first_name." ". $userdata->last_name,
                 'amount'     => $data->amount,
                 'new_balance'=> $new_balance,
                 'date'       => date('d F Y')
             );
 
-            $config_var = array( 
+            $config_var = array(
                 'template_name' => 'deposit_success',
                 'template_lang' => $appSetting->language == 'english'?'en':'fr',
             );
@@ -217,7 +217,7 @@ class FinanceController extends BaseController
                 );
 
                 //message save;
-                $this->common_model->save('message', $message_data);  
+                $this->common_model->save('message', $message_data);
             }
         }
         $this->session->setFlashdata('message', 'Deposit successfully confirmed!');
@@ -262,7 +262,7 @@ class FinanceController extends BaseController
                             'balance'       =>$totalbalance,
                             'last_update'   =>date('Y-m-d H:i:s'),
                         );
-                        
+
                         $this->common_model->update('dbt_balance', $balancedata, array('user_id' => $refferId, 'currency_symbol' => $currency_symbol));
 
                     } else {
@@ -304,7 +304,7 @@ class FinanceController extends BaseController
             $this->session->setFlashdata('exception', 'This transaction can not change now!');
             return redirect()->route('backend/finance/pending-deposit');
         }
-        
+
         $data = array(
             'status'             => 2,
             'approved_cancel_by' => "admin",
@@ -343,7 +343,7 @@ class FinanceController extends BaseController
         $data['content'] = $this->BASE_VIEW . '\withdraw\pending_withdraw_list';
         return $this->template->admin_layout($data);
     }
-   
+
 
     public function confirm_withdraw()
     {
@@ -372,11 +372,24 @@ class FinanceController extends BaseController
         $userinfo           = $this->common_model->findById('dbt_user', array('user_id' => $user_id));
         $set                = $this->common_model->findById('sms_email_send_setup', array('method' => 'email'));
         $appSetting         = $this->template->setting_data();
-        $check_user_balance = $this->common_model->findById('dbt_balance', array('user_id' => $user_id, 'currency_symbol' =>$t_data->currency_symbol));
 
-        $new_balance = $check_user_balance->balance-(@$t_data->amount+$t_data->fees_amount);
-        $newbalance['balance'] = $check_user_balance->balance-($t_data->amount+$t_data->fees_amount);
-        $this->common_model->update('dbt_balance', $newbalance, array('user_id'=>$user_id, 'currency_symbol' => $t_data->currency_symbol));
+        $check_user_balance = $this->common_model->findById('dbt_balance', array('user_id' => $user_id, 'currency_symbol' =>$t_data->currency_symbol));
+        $check_user_balance_fee = $this->common_model->findById('dbt_balance', array('user_id' => $user_id, 'currency_symbol' =>$t_data->fee_type));
+
+        if ($t_data->currency_symbol === $t_data->fee_type) {
+            $new_balance = $check_user_balance->balance - (@$t_data->amount + $t_data->fees_amount);
+            $newbalance['balance'] = $check_user_balance->balance - ($t_data->amount + $t_data->fees_amount);
+            $this->common_model->update('dbt_balance', $newbalance, array('user_id'=>$user_id, 'currency_symbol' => $t_data->currency_symbol));
+        } else {
+            $new_balance = $check_user_balance->balance - @$t_data->amount;
+            $newbalance['balance'] = $check_user_balance->balance - $t_data->amount;
+            $this->common_model->update('dbt_balance', $newbalance, array('user_id'=>$user_id, 'currency_symbol' => $t_data->currency_symbol));
+
+            $new_balance_fee = $check_user_balance_fee->balance - @$t_data->fees_amount;
+            $newbalancefee['balance'] = $check_user_balance_fee->balance - $t_data->fees_amount;
+            $this->common_model->update('dbt_balance', $newbalancefee, array('user_id'=>$user_id, 'currency_symbol' => $t_data->fee_type));
+        }
+
 
         //User Financial Log
         if ($check_user_balance) {
@@ -388,6 +401,7 @@ class FinanceController extends BaseController
                 'transaction_type'   => 'WITHDRAW',
                 'transaction_amount' => $t_data->amount,
                 'transaction_fees'   => $t_data->fees_amount,
+                'transaction_fee_type'=>$t_data->fee_type,
                 'ip'                 => $t_data->ip,
                 'date'               => $t_data->request_date
             );
@@ -396,17 +410,20 @@ class FinanceController extends BaseController
             $this->common_model->save('dbt_balance_log', $depositdata);
         }
 
-        
+
         #----------------------------
         #      email verify smtp
         #----------------------------
+        #----------------------------
+        #      send email to admin
+        #----------------------------
         $getPost = array(
             'amount'        => $t_data->amount,
-            'new_balance'   => $new_balance,
+            'currency_symbol' => $t_data->currency_symbol
         );
-        
-        $config_var = array( 
-            'template_name' => 'withdraw_success',
+
+        $config_var = array(
+            'template_name' => 'withdraw_success_admin',
             'template_lang' => $appSetting->language == 'english'?'en':'fr',
         );
         $message    = $this->common_model->email_msg_generate($config_var, $getPost);
@@ -417,7 +434,39 @@ class FinanceController extends BaseController
             'message'       => $message['message'],
         );
         $send = $this->common_model->send_email($send_email);
-       
+
+        #----------------------------
+        #      send email to user
+        #----------------------------
+        if ($t_data->currency_symbol === $t_data->fee_type) {
+            $getPost = array(
+                'amount'        => $t_data->amount,
+                'new_balance'   => $new_balance,
+                'currency_symbol' => $t_data->currency_symbol
+            );
+        } else {
+            $getPost = array(
+                'amount'        => $t_data->amount,
+                'new_balance'   => $new_balance,
+                'currency_symbol' => $t_data->currency_symbol,
+                'new_balance_fee' => $new_balance_fee,
+                'fee_type' => $t_data->fee_type,
+            );
+        }
+
+        $config_var = array(
+            'template_name' => 'withdraw_success_user',
+            'template_lang' => $appSetting->language == 'english'?'en':'fr',
+        );
+        $message    = $this->common_model->email_msg_generate($config_var, $getPost);
+        $send_email = array(
+            'title'         => $appSetting->title,
+            'to'            => $userinfo->email,
+            'subject'       => $message['subject'],
+            'message'       => $message['message'],
+        );
+        $send = $this->common_model->send_email($send_email);
+
         if($send){
                 $n = array(
                 'user_id'                => $user_id,
@@ -428,21 +477,21 @@ class FinanceController extends BaseController
                 'status'                 => '0'
             );
             //notification save
-            $this->common_model->save('notifications',$n);    
+            $this->common_model->save('notifications',$n);
         }
 
         #----------------------------
         #      Sms verify
         #----------------------------
-   
-        $template = array( 
+
+        $template = array(
             'name'      => $userinfo->first_name." ".$userinfo->last_name,
             'amount'    => $t_data->amount,
             'new_balance' => $new_balance,
             'date'      => date('d F Y')
         );
 
-        $config_var = array( 
+        $config_var = array(
             'template_name' => 'withdraw_success',
             'template_lang' => $appSetting->language == 'english'?'en':'fr',
         );
@@ -462,7 +511,7 @@ class FinanceController extends BaseController
         }
 
         if(@$send_sms){
-            
+
             $message_data = array(
                 'sender_id'   => 1,
                 'receiver_id' => $userinfo->user_id,
@@ -521,7 +570,7 @@ class FinanceController extends BaseController
 
 
     public function add_credit()
-    {  
+    {
 
         $data['title']     = display('add_credit');
         $data['coin_list'] =$this->common_model->get_all('dbt_cryptocoin', array('status' => 1), 'rank','desc',2000,0,'symbol');
@@ -533,7 +582,7 @@ class FinanceController extends BaseController
 
         /*-------------STORE DATA------------*/
         if ($this->request->getMethod() == 'post') {
-           
+
               if ($this->validation->withRequest($this->request)->run()) {
 
                 $checkUser = $this->common_model->findById('dbt_user', array('user_id' => $this->request->getPost('user_id')));
@@ -555,7 +604,7 @@ class FinanceController extends BaseController
                     $this->common_model->save('dbt_deposit', $deposit_data);
 
                     $checkbalance = $this->common_model->findById('dbt_balance', array('currency_symbol' => $this->request->getPost('crypto_coin'), 'user_id' => $this->request->getPost('user_id')));
-                    
+
                     if (!$checkbalance) {
 
                         $balance = array(
@@ -599,7 +648,7 @@ class FinanceController extends BaseController
                 return redirect()->route('backend/finance/add-credit');
             }
 
-        } 
+        }
 
         $data['title']  = 'Add Credit';
 

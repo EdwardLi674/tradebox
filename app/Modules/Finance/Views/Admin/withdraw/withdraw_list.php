@@ -5,8 +5,7 @@
                 <thead>
                     <tr>
                         <th><?php echo display('user_id') ?></th>
-                        <th><?php echo display('payment_method') ?></th>
-                        <th><?php echo display('wallet_id') ?></th>
+                        <th><?php echo display('blockchain_address') ?></th>
                         <th><?php echo display('amount') ?></th>
                         <th><?php echo display('fees') ?></th>
                         <th class="text-center"><?php echo display('status') ?></th>
@@ -18,23 +17,7 @@
                     <?php foreach ($withdraw as $value) { ?>
                     <tr>
                         <td><?php echo esc($value->user_id); ?></td>
-                        <td><?php echo esc($value->method); ?></td>
-                        <td>
-                        <?php
-                            if (is_string($value->wallet_id) && is_array(json_decode($value->wallet_id, true)) && (json_last_error() == JSON_ERROR_NONE) ? true : false) {
-                                $decode_bank = json_decode($value->wallet_id, true);
-                                echo "<b>Account Name: </b>".esc($decode_bank['acc_name'])."<br>";
-                                echo "<b>Account No: </b>".esc($decode_bank['acc_no'])."<br>";
-                                echo "<b>Branch Name: </b>".esc($decode_bank['branch_name'])."<br>";
-                                echo "<b>SWIFT Code: </b>".esc($decode_bank['swift_code'])."<br>";
-                                echo "<b>ABN No: </b>".esc($decode_bank['abn_no'])."<br>";
-                                echo "<b>Country: </b>".esc($decode_bank['country'])."<br>";
-                                echo "<b>Bank Name: </b>".esc($decode_bank['bank_name']);
-                            } else {
-                               echo esc($value->wallet_id);
-                            }
-                        ?>
-                        </td>
+                        <td><?php echo esc($value->blockchain_address); ?></td>
                         <td><?php echo esc($value->currency_symbol)." ".esc($value->amount); ?></td>
                         <td><?php echo esc($value->fees_amount); ?></td>
                         <td class="text-center">
@@ -47,7 +30,7 @@
                             <?php } ?>
                         </td>
                     </tr>
-                    <?php } ?> 
+                    <?php } ?>
                 </tbody>
             </table>
             <?php echo htmlspecialchars_decode($pager); ?>
