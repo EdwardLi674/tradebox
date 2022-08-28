@@ -68,7 +68,7 @@
             </p>
          </div>
         <div class=" m-b-15">
-           <button type="submit" class="btn btn-kingfisher-daisy"><?php echo display('submit');?></button>
+           <button type="submit" class="btn btn-kingfisher-daisy" id="withdraw_submit_btn"><?php echo display('submit');?></button>
            <a href="<?php echo base_url();?>" class="btn btn-danger"><?php echo display('cancel')?></a>
         </div>
         <?php echo form_close();?>

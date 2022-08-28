@@ -428,88 +428,51 @@ class HomeController extends BaseController
             $this->session->remove('deposit');
         }
 
+        $this->validation->setRule('blockchain_address', display('blockchain_address'), 'required|alpha_numeric');
+        $this->validation->setRule('crypto_coin', display('token_that_you_will_send'), 'required|alpha_numeric');
+        $this->validation->setRule('network', display('on_which_network'), 'required|alpha_numeric');
         $this->validation->setRule('amount', display('amount'), 'required|numeric');
-        $this->validation->setRule('method', display('payment_method'), 'required|alpha_numeric');
         $this->validation->setRule('fees', display('fees'), 'required|numeric');
 
-        $method       = $this->request->getPost('method', FILTER_SANITIZE_STRING);
-        $date         = new \DateTime();
+        $date = new \DateTime();
         $deposit_date = $date->format('Y-m-d H:i:s');
-        $comment      = $this->request->getPost('comment', FILTER_SANITIZE_STRING);
-
-        if ($this->request->getPost('method')=='phone') {
-            $mobiledata =  array(
-                'om_name'         => $this->request->getPost('om_name', FILTER_SANITIZE_STRING),
-                'om_mobile'       => $this->request->getPost('om_mobile', FILTER_SANITIZE_STRING),
-                'transaction_no'  => $this->request->getPost('transaction_no', FILTER_SANITIZE_STRING),
-                'idcard_no'       => $this->request->getPost('idcard_no', FILTER_SANITIZE_STRING),
-            );
-            $comment = json_encode($mobiledata);
-
-        }else if ($this->request->getPost('method')=='bank') {
-
-            $this->validation->setRule('document', display('document'), "ext_in[document,png,jpg,gif,ico, pdf]|is_image[document]");
-
-            if ($this->validation->withRequest($this->request)->run()){
-
-                $user_id     = $this->session->get('user_id');
-                $crypto_coin = $this->request->getPost('crypto_coin', FILTER_SANITIZE_STRING);
-
-                $user_bank = $this->common_model->findById('dbt_payout_method', array('method' => 'bank', 'currency_symbol' => $crypto_coin, 'user_id' => $user_id));
-
-                    if ($user_bank) {
-
-                        $jsondecode_bank = json_decode($user_bank->wallet_id, true);
-
-                        $filePath = $this->imageupload->upload_image($this->request->getFile('document'), 'upload/documents/', '', 500, 500);
-                        $jsondecode_bank['document'] = $filePath;
-                        $comment = json_encode($jsondecode_bank);
-
-                    } else {
-
-                        $this->session->setFlashdata('exception', display('please_setup_your_bank_account'));
-                        return  redirect()->to(base_url('bank-setting'));
-                    }
-
-                } else {
-
-                    $this->session->setFlashdata("exception", $this->validation->listErrors());
-                    return redirect()->to(base_url("deposit"));
-                }
-
-        } else {
-
-            $comment = $this->request->getPost('comment', FILTER_SANITIZE_STRING);
-        }
 
         $fees_val = $this->common_model->findById('dbt_fees', array('level' => "DEPOSIT", 'currency_symbol' => $this->request->getPost('crypto_coin')));
+        if (!$fees_val) {
+            $this->session->setFlashdata('exception', display('unable_to_use_this_token'));
+            return  redirect()->to(base_url('deposit'));
+        }
         //Fees in Percent
         $fees = calc_fees($this->request->getPost('amount', FILTER_SANITIZE_STRING), @$fees_val->fees, $fees_val->feetype);
 
         if ($this->validation->withRequest($this->request)->run()){
-
-            $sdata['deposit'] = (object)$userdata = array(
-
-                'deposit_id'     => @$deposit['deposit_id'],
-                'user_id'        => $this->session->get('user_id'),
-                'deposit_amount' => $this->request->getPost('amount', FILTER_SANITIZE_STRING),
-                'currency_symbol'=> $this->request->getPost('crypto_coin', FILTER_SANITIZE_STRING),
-                'deposit_method' => $this->request->getPost('method', FILTER_SANITIZE_STRING),
-                'fees'           => $fees,
-                'comment'        => $comment,
-                'deposit_date'   => $deposit_date,
-                'deposit_ip'     => $this->request->getIPAddress()
+            $depositData =  array(
+                'user_id'       	=> $this->session->get('user_id'),
+                'amount'    		=> $this->request->getPost('amount', FILTER_SANITIZE_STRING),
+                'method_id'     	=> "token",
+                'fees_amount'   	=> $fees,
+                'currency_symbol' 	=> $this->request->getPost('crypto_coin', FILTER_SANITIZE_STRING),
+                'comment'       	=> $this->request->getPost('comment', FILTER_SANITIZE_STRING),
+                'deposit_date'		=> $deposit_date,
+                'ip'				=> $this->request->getIPAddress(),
+                'status'    		=> 0,
+                'blockchain_address'  => $this->request->getPost('blockchain_address', FILTER_SANITIZE_STRING),
+                'network'           => $this->request->getPost('network', FILTER_SANITIZE_STRING),
+                'xx_messenger'      => $this->request->getPost('xx_messenger', FILTER_SANITIZE_STRING),
             );
 
-            $this->session->set($sdata);
-            $this->session->set('payment_type','deposit');
-            return redirect()->to(base_url("customer/payment_gateway/$method"));
+            //Store Data On Deposit
+            if ($this->common_model->save('dbt_deposit', (array)$depositData)) {
+                $this->session->setFlashdata('message', "Wait for Confirmation");
+                return redirect()->to(base_url('balances'));
+            } else {
+                $this->session->setFlashdata('exception', display('please_try_again'));
+                return redirect()->to(base_url('deposit'));
+            }
         } else {
-
             $this->session->setFlashdata("exception", $this->validation->listErrors());
             return redirect()->to(base_url("deposit"));
         }
-
     }
 
     public function payment_process()

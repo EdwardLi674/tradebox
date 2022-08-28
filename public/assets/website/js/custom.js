@@ -752,13 +752,8 @@ function copyFunction() {
 }
 //deposit segment start
 if (path == "deposit") {
-  function Fee(method) {
+  function Fee() {
     var amount = document.forms["deposit_form"].elements["amount"].value;
-    var method = document.forms["deposit_form"].elements["method"].value;
-    var crypto_coin =
-      document.forms["deposit_form"].elements["crypto_coin"].value;
-    var level = document.forms["deposit_form"].elements["level"].value;
-
     var inputdata = $("#deposit_form").serialize();
 
     /*if (amount!="" || amount==0) {
@@ -767,22 +762,26 @@ if (path == "deposit") {
     if (amount == "" || amount == 0) {
       $("#fee").text("Fees is " + 0);
     }
-    if (amount != "" && method != "") {
-      $.ajax({
-        url: BDTASK.getSiteAction("fees-load"),
-        type: "POST", //the way you want to send data to your URL
-        data: inputdata,
-        dataType: "JSON",
-        success: function (data) {
-          if (data) {
-            $('[name="fees"]').val(data.fees);
-            $("#fee").text("Fees is " + data.fees);
-          } else {
-            alert("Error!");
+    $.ajax({
+      url: BDTASK.getSiteAction("fees-load"),
+      type: "POST", //the way you want to send data to your URL
+      data: inputdata,
+      dataType: "JSON",
+      success: function (data) {
+        if (data.feetype) {
+          $('[name="fees"]').val(data.fees);
+          $("#fee").text("Fees is " + data.fees + " ");
+          if (amount === "" || amount === 0) {
+            $("#fee").text("Fees is " + 0);
           }
-        },
-      });
-    }
+          $("#deposit_submit_btn").attr("disabled", false);
+        } else {
+          // alert("Error!");
+          $("#fee").text("Unable to use this token.");
+          $("#deposit_submit_btn").attr("disabled", true);
+        }
+      },
+    });
   }
 }
 //deposit segment end
@@ -811,9 +810,11 @@ if (path == "withdraw") {
           if (amount === "" || amount === 0) {
             $("#fee").text("Fees is " + 0);
           }
+          $("#withdraw_submit_btn").attr("disabled", false);
         } else {
           // alert("Error!");
           $("#fee").text("Unable to use this token.");
+          $("#withdraw_submit_btn").attr("disabled", true);
         }
       },
     });
@@ -985,6 +986,20 @@ if (path == "transfer-confirm") {
 }
 
 $(document).ready(function () {
+  // show popover for copying Tron address to clipboard in Deposit page
+  $("#tron_address_btn").popover();
+  $("#tron_address_btn").on("click", function () {
+    const tron_address = $("#tron_address").text();
+    navigator.clipboard.writeText(tron_address);
+  });
+
+  // show popover for copying Solana address to clipboard in Deposit page
+  $("#solana_address_btn").popover();
+  $("#solana_address_btn").on("click", function () {
+    const solana_address = $("#solana_address").text();
+    navigator.clipboard.writeText(solana_address);
+  });
+
   // get the list of coin
   $.getJSON(BDTASK.getSiteAction("dafult-data"), function (data) {
     var htmlCoin =

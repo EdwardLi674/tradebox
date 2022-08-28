@@ -21,7 +21,7 @@
 	    color: <?php echo @$theme->menu_font_color; ?>;
 	}
 	.page-scroll {
-	    color: <?php echo @$theme->footer_font_color;  ?>;	
+	    color: <?php echo @$theme->footer_font_color;  ?>;
 	}
 	.footer .social-link li a i {
 		color: <?php echo @$theme->footer_font_color;  ?>;
@@ -42,7 +42,7 @@
 	.footer {
 		background: <?php echo @$theme->footer_bg_color;  ?>;
 	}
-	/*Button primary color*/	
+	/*Button primary color*/
 	.btn-kingfisher-daisy {
 	    background-color: <?php echo @$theme->btn_bg_color;  ?>;
 	    border-color: <?php echo @$theme->btn_bg_color;  ?>;
@@ -86,7 +86,7 @@
 	}
 	.post-date {
 	    color: <?php echo @$theme->theme_color;  ?>;
-	}	
+	}
     .notices .card-header{
         background-color:  <?php echo @$theme->theme_color;  ?>;
         color: <?php echo @$theme->btn_font_color;  ?>;
@@ -171,7 +171,7 @@
 	    height: 35px;
 	    background-color: <?php echo @$theme->form_input_field_background_color; ?>;
 	    border-color: <?php echo @$theme->input_field_border_color;  ?>;
-	    color: <?php echo @$theme->input_field_color; ?>; 
+	    color: <?php echo @$theme->input_field_color; ?>;
 	}
 	.form-control:focus {
 	    background-color: <?php echo @$theme->body_font_color; ?>;
@@ -276,17 +276,17 @@
 	    border: 1px solid <?php echo @$theme->form_border_color;  ?>;
 	}
 	.confirm-withdraw, .confirm-transfer {
-	   margin: 0px auto; 
+	   margin: 0px auto;
 	}
 	.modal-content {
 	    background-color: <?php echo @$theme->form_background_color; ?>;
 	    border: 1px solid <?php echo @$theme->form_border_color; ?>;
-	}  
+	}
 	.modal-header {
 	    border-bottom: 1px solid <?php echo @$theme->form_border_color; ?>;
-	} 
+	}
 	.modal-footer{
-	    border-top: 1px solid <?php echo @$theme->form_border_color; ?>;;    
+	    border-top: 1px solid <?php echo @$theme->form_border_color; ?>;;
 	}
 	.modal-title, .modal-body label, .modal-header .close span {
 	    color: <?php echo @$theme->form_label_color; ?>;
@@ -297,7 +297,7 @@
 
 	/* Change autocomplete styles in WebKit */
 	input:-webkit-autofill,
-	input:-webkit-autofill:hover, 
+	input:-webkit-autofill:hover,
 	input:-webkit-autofill:focus,
 	textarea:-webkit-autofill,
 	textarea:-webkit-autofill:hover,
@@ -306,7 +306,7 @@
 	select:-webkit-autofill:hover,
 	select:-webkit-autofill:focus {
 	  border: 1px solid <?php echo @$theme->input_field_border_color;  ?>;
-	  -webkit-text-fill-color: <?php echo @$theme->input_field_color; ?>; 
+	  -webkit-text-fill-color: <?php echo @$theme->input_field_color; ?>;
 	  -webkit-box-shadow: 0 0 0px 1000px #060d13 inset;
 	  transition: background-color 5000s ease-in-out 0s;
 	}
@@ -314,4 +314,18 @@
 	    color: <?php echo @$theme->body_font_color; ?>;
 	    background-color: <?php echo @$theme->body_background_color; ?>;
     }
+
+	button.transparent-btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+	}
+
+	a.xx-messenger-ref:hover {
+		text-decoration: underline;
+		color: blue;
+	}
 </style>
