@@ -68,6 +68,7 @@ class FinanceController extends BaseController
 
 
         $deposit_data = array(
+            'approved_date' => date('Y-m-d h:i:s'),
             'status' => 1,
             'approved_cancel_by' => "admin",
         );
@@ -80,7 +81,7 @@ class FinanceController extends BaseController
         $this->refferalbonus($data->amount,$data->currency_symbol,$data->user_id);
 
         if ($check_user_balance) {
-            $new_balance = $check_user_balance->balance+$data->amount;
+            $new_balance = $check_user_balance->balance + $data->amount - $data->fees_amount;
 
             $newBalance = array(
                 'balance' => $new_balance,
@@ -94,6 +95,7 @@ class FinanceController extends BaseController
                 'transaction_type'   => 'DEPOSIT',
                 'transaction_amount' => $data->amount,
                 'transaction_fees'   => $data->fees_amount,
+                'transaction_fee_type'   => $data->currency_symbol,
                 'ip'                 => $data->ip,
                 'date'               => $data->deposit_date
             );
@@ -102,12 +104,12 @@ class FinanceController extends BaseController
 
         } else {
 
-            $new_balance = $data->amount;
+            $new_balance = $data->amount - $data->fees_amount;
 
             $balance = array(
                 'user_id'         => $data->user_id,
                 'currency_symbol' => $csym,
-                'balance'         => $data->amount,
+                'balance'         => $new_balance,
                 'last_update'     => date('Y-m-d h:i:s'),
             );
 
@@ -122,6 +124,7 @@ class FinanceController extends BaseController
                 'transaction_type'   => 'DEPOSIT',
                 'transaction_amount' => $data->amount,
                 'transaction_fees'   => $data->fees_amount,
+                'transaction_fee_type'   => $data->currency_symbol,
                 'ip'                 => $data->ip,
                 'date'               => $data->deposit_date
             );
@@ -132,94 +135,111 @@ class FinanceController extends BaseController
         $set        = $this->common_model->findById('sms_email_send_setup',array('method' => 'email'));
         $appSetting = $this->template->setting_data();
 
-        #-----------------------------------------------------
-        if($set->deposit != NULL){
-            #----------------------------
-            #      email verify smtp
-            #----------------------------
+        #----------------------------
+        #      email verify smtp
+        #----------------------------
+        #----------------------------
+        #      send email to admin
+        #----------------------------
+        $getPost = array(
+            'amount'        => $data->amount,
+            'currency_symbol' => $data->currency_symbol
+        );
 
-            $getPost = array(
+        $config_var = array(
+            'template_name' => 'deposit_success_admin',
+            'template_lang' => $appSetting->language == 'english'?'en':'fr',
+        );
+        $message    = $this->common_model->email_msg_generate($config_var, $getPost);
+        $send_email = array(
+            'title'         => $appSetting->title,
+            'to'            => $this->session->get('email'),
+            'subject'       => $message['subject'],
+            'message'       => $message['message'],
+        );
+        $send = $this->common_model->send_email($send_email);
 
-                'amount'     => $data->amount,
-                'name'       => $userdata->first_name." ". $userdata->last_name,
-                'new_balance'=> $new_balance,
-                'date'       => date('d F Y')
+        #----------------------------
+        #      send email to user
+        #----------------------------
+        $getPost = array(
+            'amount'     => $data->amount,
+            'new_balance'=> $new_balance,
+            'currency_symbol' => $data->currency_symbol
+        );
+
+        $config_var = array(
+            'template_name' => 'deposit_success_user',
+            'template_lang' => $appSetting->language == 'english'?'en':'fr',
+        );
+        $message    = $this->common_model->email_msg_generate($config_var, $getPost);
+
+        $send_email = array(
+            'title'   => $appSetting->title,
+            'to'      => $userdata->email,
+            'subject' => $message['subject'],
+            'message' => $message['message'],
+        );
+
+        $send_email = $this->common_model->send_email($send_email);
+
+        if($send_email){
+
+            $n = array(
+
+                'user_id'           => $userdata->user_id,
+                'subject'           => $message['subject'],
+                'notification_type' => 'deposit',
+                'details'           => $message['message'],
+                'date'              => date('Y-m-d h:i:s'),
+                'status'            => '0'
             );
-
-            $config_var = array(
-                'template_name' => 'deposit_success',
-                'template_lang' => $appSetting->language == 'english'?'en':'fr',
-            );
-            $message    = $this->common_model->email_msg_generate($config_var, $getPost);
-
-            $send_email = array(
-                'title'   => $appSetting->title,
-                'to'      => $this->session->get('email'),
-                'subject' => $message['subject'],
-                'message' => $message['message'],
-            );
-
-
-
-            $send_email = $this->common_model->send_email($send_email);
-
-            if($send_email){
-
-                    $n = array(
-
-                        'user_id'           => $userdata->user_id,
-                        'subject'           => $message['subject'],
-                        'notification_type' => 'deposit',
-                        'details'           => $message['message'],
-                        'date'              => date('Y-m-d h:i:s'),
-                        'status'            => '0'
-                    );
-                //notification save
-                $this->common_model->save('notifications',  $n);
-            }
-
-
-            #------------------------------
-            #   SMS Sending
-            #------------------------------
-
-            $template = array(
-                'name'       => $userdata->first_name." ". $userdata->last_name,
-                'amount'     => $data->amount,
-                'new_balance'=> $new_balance,
-                'date'       => date('d F Y')
-            );
-
-            $config_var = array(
-                'template_name' => 'deposit_success',
-                'template_lang' => $appSetting->language == 'english'?'en':'fr',
-            );
-            $message    = $this->common_model->sms_msg_generate($config_var, $template);
-            $send_sms = array(
-                'to'       => $userdata->phone,
-                'message' => $message['message'],
-            );
-
-            if (@$userdata->phone) {
-                $send_sms = $this->sms_lib->send($send_sms);
-
-            } else {
-                $this->session->setFlashdata('exception', display('there_is_no_phone_number'));
-            }
-
-            if($send_sms){
-                $message_data = array(
-                    'sender_id'    => 1,
-                    'receiver_id'  => $userdata->user_id,
-                    'subject'      => $message['subject'],
-                    'message'      => $message['message'],
-                    'datetime'     => date('Y-m-d h:i:s'),
-                );
-
-                //message save;
-                $this->common_model->save('message', $message_data);
-            }
+            //notification save
+            $this->common_model->save('notifications',  $n);
         }
+
+
+        #------------------------------
+        #   SMS Sending
+        #------------------------------
+
+        $template = array(
+            'name'       => $userdata->first_name." ". $userdata->last_name,
+            'amount'     => $data->amount,
+            'new_balance'=> $new_balance,
+            'date'       => date('d F Y')
+        );
+
+        $config_var = array(
+            'template_name' => 'deposit_success',
+            'template_lang' => $appSetting->language == 'english'?'en':'fr',
+        );
+        $message    = $this->common_model->sms_msg_generate($config_var, $template);
+        $send_sms = array(
+            'to'       => $userdata->phone,
+            'message' => $message['message'],
+        );
+
+        if (@$userdata->phone) {
+            $send_sms = $this->sms_lib->send($send_sms);
+
+        } else {
+            $this->session->setFlashdata('exception', display('there_is_no_phone_number'));
+        }
+
+        if($send_sms){
+            $message_data = array(
+                'sender_id'    => 1,
+                'receiver_id'  => $userdata->user_id,
+                'subject'      => $message['subject'],
+                'message'      => $message['message'],
+                'datetime'     => date('Y-m-d h:i:s'),
+            );
+
+            //message save;
+            $this->common_model->save('message', $message_data);
+        }
+
         $this->session->setFlashdata('message', 'Deposit successfully confirmed!');
         return redirect()->route('backend/finance/pending-deposit');
     }

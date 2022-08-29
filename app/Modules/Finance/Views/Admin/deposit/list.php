@@ -2,20 +2,22 @@
     <div class="col-sm-12 col-md-12">
         <div class="card">
             <div class="card-body">
-                <table  id="example" class="table table-bordered table-hover">
+                <table  id="example" class="table table-responsive table-bordered table-hover">
                     <thead>
-                        <tr> 
+                        <tr>
                             <th><?php echo display('sl_no') ?></th>
                             <th><?php echo display('user_id') ?></th>
-                            <th class="text-right"><?php echo display('amount') ?></th>
-                            <th>Currency/Coin</th>
-                            <th><?php echo display('payment_method') ?></th>
-                            <th class="text-right"><?php echo display('fees') ?></th>
+                            <th><?php echo display('blockchain_address') ?></th>
+                            <th>Network</th>
+                            <th><?php echo display('xx_messenger') ?></th>
+                            <th>Coin</th>
+                            <th><?php echo display('amount') ?></th>
+                            <th><?php echo display('fees') ?></th>
                             <th><?php echo display('comments') ?></th>
                             <th><?php echo display('date') ?></th>
                             <th class="text-center"><?php echo display('action')."/".display('status'); ?></th>
                         </tr>
-                    </thead> 
+                    </thead>
                     <tbody>
                         <?php if (!empty($deposit)) ?>
                         <?php $sl = 1; ?>
@@ -23,59 +25,17 @@
                         <tr>
                             <td><?php echo $sl++; ?></td>
                             <td><?php echo esc($value->user_id); ?></td>
-                            <td class="text-right"><?php echo esc((float)$value->amount); ?></td>
+                            <td><?php echo esc($value->blockchain_address); ?></td>
+                            <td><?php echo esc($value->network); ?></td>
+                            <td><?php echo esc($value->xx_messenger); ?></td>
                             <td><?php echo esc($value->currency_symbol); ?></td>
-                            <td><?php echo esc($value->method_id); ?></td>
-                            <td class="text-right"><?php echo esc((float)$value->fees_amount); ?></td>
-                            <td>
-                                <?php
-                                    if (is_string($value->comment) && is_array(json_decode($value->comment, true)) && ((json_last_error() == JSON_ERROR_NONE) ? true : false) && $value->method_id=='phone') {
-
-                                       $mobiledata = json_decode($value->comment, true);
-                                       echo '<b>OM Name:</b> '.$mobiledata['om_name'].'<br>';
-                                       echo '<b>OM Phone No:</b> '.$mobiledata['om_mobile'].'<br>';
-                                       echo '<b>Transaction No:</b> '.$mobiledata['transaction_no'].'<br>';
-                                       echo '<b>ID Card No:</b> '.$mobiledata['idcard_no'];
-
-                                    }elseif (is_string($value->comment) && is_array(json_decode($value->comment, true)) && ((json_last_error() == JSON_ERROR_NONE) ? true : false) && $value->method_id=='bank') {
-
-                                        $decode_bank = json_decode($value->comment, true);
-
-                                        $typeex = pathinfo(@$decode_bank['document']);
-
-                                        if(!empty($typeex['basename'])){
-
-                                            $extension = $typeex['extension'];
-                                        }
-
-
-                                        echo "<b>Account Name: </b>".@$decode_bank['acc_name']."<br>";
-                                        echo "<b>Account No: </b>".@$decode_bank['acc_no']."<br>";
-                                        echo "<b>Branch Name: </b>".@$decode_bank['branch_name']."<br>";
-                                        echo "<b>SWIFT Code: </b>".@$decode_bank['swift_code']."<br>";
-                                        echo "<b>ABN No: </b>".@$decode_bank['abn_no']."<br>";
-                                        echo "<b>Country: </b>".@$decode_bank['country']."<br>";
-                                        echo "<b>Bank Name: </b>".@$decode_bank['bank_name']."<br>";                                        
-                                        if (isset($decode_bank['document'])) {
-                                            echo "<b>Document: </b>";
-
-                                            if(@$extension != "pdf"){
-                                                echo "<img  width='150px' height='150px' src='".IMAGEPATH.$decode_bank['document']."' class='img-responsive' /><a href='".IMAGEPATH.$decode_bank['document']."' class='btn btn-success' download='".@$decode_bank['acc_name']."'>Download File</a>";  
-                                            } else {                              
-                                                echo "<embed src='".IMAGEPATH.$decode_bank['document']."' width='600'/><a href='".IMAGEPATH.$decode_bank['document']."' class='btn btn-success' download='".@$decode_bank['acc_name']."'>Download File</a>";
-                                            }                                
-                                        }
-
-                                    } else {
-                                       echo esc($value->comment);
-
-                                    }
-                                ?>
-                            </td>
+                            <td><?php echo esc((float)$value->amount); ?></td>
+                            <td><?php echo esc((float)$value->fees_amount); ?></td>
+                            <td><?php echo esc($value->comment);?></td>
                             <td>
                                 <?php
                                     $date=date_create($value->deposit_date);
-                                    echo date_format($date,"jS F Y"); 
+                                    echo date_format($date, "Y-m-d");
                                 ?>
                             </td>
                             <?php if (esc($value->status)==1) { ?>
@@ -89,13 +49,12 @@
                             </td>
                            <?php } ?>
                         </tr>
-                        <?php } ?>  
+                        <?php } ?>
                     </tbody>
                 </table>
                 <?php echo  htmlspecialchars_decode($pager); ?>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
 
- 
