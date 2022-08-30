@@ -88,6 +88,9 @@
 		$subroutes->add('open-order-json', 'HomeController::open_order_json');
 		$subroutes->add('complete-trade-json', 'HomeController::complete_trade_json');
 		$subroutes->add('user-trade-history-json', 'HomeController::user_trade_history_json');
+
+		$subroutes->add('article-token/(:any)', 'HomeController::article_token/$1');
+
 		$subroutes->add('tester', 'HomeController::test');
 	});
 

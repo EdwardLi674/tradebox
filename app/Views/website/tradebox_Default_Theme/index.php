@@ -2,8 +2,8 @@
     <div id="banner_bg_effect" class="banner_effect"></div>
     <div class="animation-slide owl-carousel owl-theme" id="animation-slide">
 
-    <?php 
-    $i=0; 
+    <?php
+    $i=0;
     foreach ($slider as $key => $value) {
         $slide_h1 =  isset($lang) && $lang =="french"?$value->slider_h1_fr:$value->slider_h1_en;
         $slide_h2 =  isset($lang) && $lang =="french"?$value->slider_h2_fr:$value->slider_h2_en;
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        
+
     <?php }  $i++; } ?>
 
 
@@ -93,28 +93,33 @@
             <?php foreach ($coin as $key => $value) { ?>
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="imagine-card">
-                    <div class="imagine-card-head">
-                        <div class="imagine-card-logo">
-
-                            <img src="<?php echo $value->image?IMAGEPATH.$value->image:$value->url; ?>" alt="<?php echo esc($value->full_name); ?>">
+                    <?php if ($value->article_id) { ?>
+                    <a href="<?php echo base_url("article-token/$value->id"); ?>">
+                    <?php } ?>
+                        <div class="imagine-card-head">
+                            <div class="imagine-card-logo">
+                                <img src="<?php echo $value->image?IMAGEPATH.$value->image:$value->url; ?>" alt="<?php echo esc($value->full_name); ?>">
+                            </div>
+                            <div>
+                                <div class="imagine-card-name"><?php echo esc($value->symbol); ?></div>
+                                <div class="imagine-card-date"><?php echo esc($value->full_name); ?></div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="imagine-card-name"><?php echo esc($value->symbol); ?></div>
-                            <div class="imagine-card-date"><?php echo esc($value->full_name); ?></div>
-                        </div>
-                    </div>
-                    <div class="imagine-card-bottom">
-                        <div class="imagine-card-chart">
-                            <span class="bdtasksparkline value_graph" id="GRAPH_<?php echo esc($value->symbol); ?>"></span>
-                        </div>
-                        <div>
-                            <div class="imagine-card-change">
-                                <span class="Percent" id="CHANGE24HOURPCT_<?php echo esc($value->symbol); ?>"></span>
-                                <div class="imagine-card-points">
+                        <div class="imagine-card-bottom">
+                            <div class="imagine-card-chart">
+                                <span class="bdtasksparkline value_graph" id="GRAPH_<?php echo esc($value->symbol); ?>"></span>
+                            </div>
+                            <div>
+                                <div class="imagine-card-change">
+                                    <span class="Percent" id="CHANGE24HOURPCT_<?php echo esc($value->symbol); ?>"></span>
+                                    <div class="imagine-card-points">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php if ($value->article_id) { ?>
+                    </a>
+                    <?php } ?>
                 </div>
             </div>
             <?php } ?>

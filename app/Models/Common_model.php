@@ -95,6 +95,19 @@ class Common_model
 		        return $data=$query->getResult();
   	}
 
+  public function get_leftjoin_all($table, $where = array(), $table2, $con = '', $serialized = null, $order = null, $limit = 0, $offset = 0, $groupBy = ''){
+
+     $builder = $this->db->table($table);
+		        $builder->select('*');
+            $builder->join($table2, $con, 'left');
+		        $builder->where($where);
+		        $builder->limit($limit,$offset);
+            $builder->groupBy($groupBy);
+		        $builder->orderBy($serialized, $order);
+		        $query=$builder->get();
+		        return $data=$query->getResult();
+  	}
+
   //Send email via SMTP server in CodeIgniter
 	public function send_email($post=array()){
 

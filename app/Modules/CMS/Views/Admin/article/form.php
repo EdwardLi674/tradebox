@@ -17,7 +17,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="border_preview">
                 <?php echo form_open_multipart(base_url("backend/cms/add-page-content/$article->article_id")) ?>
-                <?php echo form_hidden('article_id', @$article->article_id) ?> 
+                <?php echo form_hidden('article_id', @$article->article_id) ?>
                     <div class="form-group row">
                         <label for="headline_en" class="col-sm-2 col-form-label font-weight-600"><?php echo display('headline_en') ?><i class="text-danger">*</i></label>
                         <div class="col-sm-10">
@@ -49,34 +49,45 @@
                     <div class="form-group row">
                         <label for="article1_en" class="col-sm-2 col-form-label font-weight-600"><?php echo display('article_en') ?></label>
                         <div class="col-sm-10">
-                            <textarea  id="ckeditor" name="article1_en" class="form-control editor" placeholder="<?php echo display('article_en') ?>" type="text" id="article1_en"><?php echo strip_tags(@$article->article1_en) ?></textarea>
+                            <textarea  id="ckeditor" name="article1_en" class="form-control editor" placeholder="<?php echo display('article_en') ?>" type="text" id="article1_en"><?php echo @$article->article1_en; ?></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="article1_fr" class="col-sm-2 col-form-label font-weight-600"><?php echo display('article')." ".esc($web_language->name) ?></label>
                         <div class="col-sm-10">
-                            <textarea   id="ckeditor2" name="article1_fr" class="form-control" placeholder="<?php echo display('article')." ".$web_language->name ?>" type="text" id="article1_fr"><?php echo strip_tags(@$article->article1_fr) ?></textarea>
+                            <textarea   id="ckeditor2" name="article1_fr" class="form-control" placeholder="<?php echo display('article')." ".$web_language->name ?>" type="text" id="article1_fr"><?php echo @$article->article1_fr; ?></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="article2_en" class="col-sm-2 col-form-label font-weight-600"><?php echo display('article_en') ?></label>
                         <div class="col-sm-10">
-                            <textarea  id="ckeditor3" name="article2_en" class="form-control editor" placeholder="<?php echo display('article_en') ?>" type="text" id="article2_en"><?php echo strip_tags(@$article->article2_en) ?></textarea>
+                            <textarea  id="ckeditor3" name="article2_en" class="form-control editor" placeholder="<?php echo display('article_en') ?>" type="text" id="article2_en"><?php echo @$article->article2_en; ?></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="article2_fr" class="col-sm-2 col-form-label font-weight-600"><?php echo display('article')." ".esc($web_language->name) ?></label>
                         <div class="col-sm-10">
-                            <textarea   id="ckeditor4" name="article2_fr" class="form-control" placeholder="<?php echo display('article')." ".$web_language->name ?>" type="text" id="article2_fr"><?php echo strip_tags(@$article->article2_fr) ?></textarea>
+                            <textarea   id="ckeditor4" name="article2_fr" class="form-control" placeholder="<?php echo display('article')." ".$web_language->name ?>" type="text" id="article2_fr"><?php echo @$article->article2_fr; ?></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="cat_id" class="col-sm-2 col-form-label font-weight-600"><?php echo display('select_cat') ?><i class="text-danger">*</i></label>
                         <div class="col-sm-10">
-                            <select class="form-control basic-single" name="cat_id">
+                            <select class="form-control basic-single" name="cat_id" onchange="onCategory(this);">
                                 <option value=""><?php echo display('select_cat') ?></option>
                                 <?php foreach ($parent_cat as $key => $value) { ?>
                                     <option value="<?php echo $value->cat_id; ?>" <?php echo (@$article->cat_id==@$value->cat_id)?'Selected':'' ?>><?php echo esc(@$value->cat_name_en); ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row d-none" id="token_div">
+                        <label for="token_id" class="col-sm-2 col-form-label font-weight-600"><?php echo display('select_token') ?><i class="text-danger">*</i></label>
+                        <div class="col-sm-10">
+                            <select class="form-control basic-single" name="token_id">
+                                <option value=""><?php echo display('select_token') ?></option>
+                                <?php foreach ($coin as $key => $value) { ?>
+                                    <option value="<?php echo $value->id; ?>" <?php echo (@$article->token_id==@$value->id)?'Selected':'' ?>><?php echo esc(@$value->full_name); ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -101,6 +112,24 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        var selected_catname = $('select[name=cat_id]').find(":selected").text();
+        if (selected_catname === "Traded Tokens") {
+            $("#token_div").removeClass("d-none");
+        }
+    });
+
+    function onCategory(sel) {
+        const cat_name = sel.options[sel.selectedIndex].text;
+        if (cat_name === "Traded Tokens") {
+            $("#token_div").removeClass("d-none");
+        } else {
+            $("#token_div").addClass("d-none");
+        }
+    }
+</script>
+
 <!-- summernote css -->
 <script src="<?php echo BASEPATH.'/assets/plugins/select2/dist/js/select2.min.js' ?>"></script>
 <script src="<?php echo BASEPATH.'/assets/dist/js/pages/demo.select2.js' ?>"></script>
@@ -109,4 +138,3 @@
 <!--Page Active Scripts(used by this page)-->
 <script src="<?php echo BASEPATH.'/assets/plugins/ckeditor/ckeditor.active.js' ?>"></script>
 
- 

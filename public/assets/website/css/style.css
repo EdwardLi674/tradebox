@@ -5,9 +5,9 @@ body {
 a:hover {
   text-decoration: none;
 }
-p {
+/* p {
   color: rgba(0, 0, 0, 0.5);
-}
+} */
 ul,
 ol {
   margin: 0;
@@ -69,23 +69,22 @@ output {
   left: 0;
   z-index: 1030;
 }
-.navbar-nav .nav-link{
-    color: #fff;
+.navbar-nav .nav-link {
+  color: #fff;
   font-size: 14px;
-   font-weight: 400;
-    letter-spacing: 1px;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
-.navbar-nav .nav-link .active{
-    color: #fff;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 1px;
+.navbar-nav .nav-link .active {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 .bg-transparent .navbar-nav .nav-link {
   padding-right: 0.6rem;
   padding-left: 0.6rem;
- 
 }
 .bg-transparent .navbar-brand .logo {
   height: 42px;
@@ -106,11 +105,12 @@ output {
   }
 }
 .dropdown-menu {
-    font-size: 13px;
+  font-size: 13px;
 }
-.dropdown-item:focus, .dropdown-item:hover {
-    color: #00b746;
-    background-color: transparent;
+.dropdown-item:focus,
+.dropdown-item:hover {
+  color: #00b746;
+  background-color: transparent;
 }
 /* Sidebar mobile navbar ----------------------*/
 #sidebar {
@@ -682,6 +682,7 @@ output {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   background-color: #fff;
   border-radius: 8px;
+  min-height: 160px;
 }
 .imagine-card:hover {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);

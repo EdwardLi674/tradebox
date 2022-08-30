@@ -12,7 +12,7 @@ class HomeController extends BaseController
         $cat_id             = $this->common_model->findById('web_category', array('slug' => "home", 'status' => 1));
         $data['slider']     = $this->common_model->findAll('web_slider', array('status' => 1), 'id', 'desc');
         $data['article']    = $this->common_model->get_all('web_article',array('cat_id' => @$cat_id->cat_id), 'position_serial', 'asc', 12,0, '');
-        $data['coin']       = $this->common_model->get_all('dbt_cryptocoin', array('show_home' => 1), 'coin_position', 'asc', 12, 0, '');
+        $data['coin']       = $this->common_model->get_leftjoin_all('dbt_cryptocoin', array('show_home' => 1), 'web_article', 'dbt_cryptocoin.id = web_article.token_id', 'coin_position', 'asc', 12, 0, '');
 
         $data['page']  = $this->BASE_VIEW.'/index';
         return $this->master->master($data);
@@ -3979,6 +3979,12 @@ class HomeController extends BaseController
         $trades = $this->web_model->userTradeHistory($this->session->get('user_id'));
 
         echo json_encode(array('trades' => $trades));
+    }
+
+    public function article_token($token_id = null) {
+        $data['article'] = $this->common_model->findById('web_article', array('token_id' => $token_id));
+        $data['page']  = $this->BASE_VIEW.'/article-token';
+        return $this->master->master($data);
     }
 
 }
