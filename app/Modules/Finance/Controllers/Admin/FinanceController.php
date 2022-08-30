@@ -222,9 +222,6 @@ class FinanceController extends BaseController
 
         if (@$userdata->phone) {
             $send_sms = $this->sms_lib->send($send_sms);
-
-        } else {
-            $this->session->setFlashdata('exception', display('there_is_no_phone_number'));
         }
 
         if($send_sms){
@@ -524,10 +521,6 @@ class FinanceController extends BaseController
 
         if (@$userinfo->phone) {
             $send_sms = $this->sms_lib->send($send_sms);
-
-        } else {
-
-            $this->session->setFlashdata('exception', display('there_is_no_phone_number'));
         }
 
         if(@$send_sms){

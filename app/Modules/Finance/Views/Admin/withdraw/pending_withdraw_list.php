@@ -5,7 +5,6 @@
               <thead>
                   <tr>
                       <th width="60"><?php echo display('user_id') ?></th>
-                      <th><?php echo display('method') ?></th>
                       <th><?php echo display('blockchain_address') ?></th>
                       <th><?php echo display('amount') ?></th>
                       <th><?php echo display('fees') ?></th>
@@ -19,9 +18,8 @@
                   <?php foreach ($withdraw as $value) { ?>
                   <tr>
                       <td><?php echo esc($value->user_id); ?></td>
-                      <td><?php echo esc($value->method); ?></td>
                       <td><?php echo esc($value->blockchain_address);?></td>
-                      <td><?php echo esc($value->currency_symbol." ".$value->amount); ?></td>
+                      <td><?php echo esc($value->amount." ".$value->currency_symbol); ?></td>
                       <td><?php echo esc($value->fees_amount." ".$value->fee_type); ?></td>
                       <td class="text-center">
 

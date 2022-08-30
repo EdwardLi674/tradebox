@@ -94,7 +94,7 @@
                   <?php echo display('your_xx_messenger_address') ?>
                </div>
                <div class="mt-1 w-50">
-                  <input class="form-control" name="xx_messenger" type="text" id="xx_messenger" autocomplete="off" required>
+                  <input class="form-control" name="xx_messenger" type="text" id="xx_messenger" autocomplete="off">
                </div>
                <div class="row mt-3">
                   <div class="col-6 text-right">ZeroFeex Exchange Address</div>

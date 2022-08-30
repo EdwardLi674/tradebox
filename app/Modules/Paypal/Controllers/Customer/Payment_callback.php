@@ -84,7 +84,7 @@ class Payment_callback extends BaseController
                             );
 
                             $deposit = $this->session->set($sdata);
-                        
+
 
                             $this->deposit_confirm();
                             return redirect()->to(base_url('balances'));
@@ -138,12 +138,12 @@ class Payment_callback extends BaseController
                         elseif ($payment_type == 'sell')
                         {
                             # code...
-                            
+
                         }
                         else
                         {
                             # code...
-                            
+
                         }
                     }
 
@@ -186,10 +186,10 @@ class Payment_callback extends BaseController
 			$sql = "SELECT * FROM `dbt_deposit` WHERE user_id='".$deposit->user_id."' AND currency_symbol='".$deposit->currency_symbol."' AND amount	='".$deposit->deposit_amount."' AND fees_amount='".$deposit->fees_amount."' AND deposit_date='".$deposit->deposit_date."'";
         	$same_payment = $this->db->query($sql, [])->getRow();
 	    	//Find same payment
-			
+
 	    	//Store Data On Deposit
 			if (!$same_payment) {
-				
+
 				$userinfo = $this->common_model->findById('dbt_user', array('user_id' => $this->session->get('user_id')));
 
 				$datadeposit = array(
@@ -209,7 +209,7 @@ class Payment_callback extends BaseController
 
 	    		//User Financial Log
 				if ($deposit_balance) {
-					
+
 					$depositdata = array(
 						'user_id'            => $deposit->user_id,
 						'balance_id'         => $deposit_balance,
@@ -239,8 +239,8 @@ class Payment_callback extends BaseController
 					$getPost = array(
 						'amount' => $deposit->currency_symbol." ".$deposit->deposit_amount,
 					);
-					
-					$config_var = array( 
+
+					$config_var = array(
                         'template_name' => 'deposit_success',
                         'template_lang' => $user_lang->language == 'english'?'en':'fr',
                     );
@@ -263,20 +263,20 @@ class Payment_callback extends BaseController
 							'date'              => date('Y-m-d h:i:s'),
 							'status'            => '0'
 						);
-						$this->common_model->save('notifications',$n);    
+						$this->common_model->save('notifications',$n);
 					}
 				}
 
 				if($setsms->deposit != NULL){
 
-					$template = array( 
+					$template = array(
 
 						'name'   => $this->session->get('fullname'),
 						'amount' => $deposit->currency_symbol." ".$deposit->deposit_amount,
 						'date'   => date('d F Y')
 					);
 
-					$config_var = array( 
+					$config_var = array(
                         'template_name' => 'deposit_success',
                         'template_lang' => $user_lang->language == 'english'?'en':'fr',
                     );
@@ -292,7 +292,7 @@ class Payment_callback extends BaseController
 						$send_sms = $this->sms_lib->send($send_sms);
 
 					} else {
-						$this->session->setFlashdata('exception', display('there_is_no_phone_number'));
+						$this->session->setFlashdata('exception', display(''));
 					}
 
 					if(@$send_sms){
@@ -303,27 +303,27 @@ class Payment_callback extends BaseController
 							'message' 	  => $message['message'],
 							'datetime' 	  => date('Y-m-d h:i:s'),
 						);
-						$this->common_model->save('message',$message_data);    
+						$this->common_model->save('message',$message_data);
 					}
 				}
 				unset($_SESSION['payment_type']);
 				$this->session->setFlashdata('message', display('payment_successfully'));
-				
-				return 1; 
+
+				return 1;
 
 			} else {
 
 				unset($_SESSION['payment_type']);
 				$this->session->setFlashdata('exception', display('please_try_again'));
-			
-				return 2; 
+
+				return 2;
 			}
 	}
 
 	private function refferalbonus($amount="",$currency_symbol="",$user_id="")
 	{
 		$reffereldata = $this->common_model->findById('dbt_user', array('user_id' => $user_id));
-		
+
 
 		if($reffereldata->referral_id){
 			$refferId = $reffereldata->referral_id;
@@ -360,7 +360,7 @@ class Payment_callback extends BaseController
 							'balance'       =>$totalbalance,
 							'last_update'   =>date('Y-m-d H:i:s'),
 						);
-						
+
 						$this->common_model->update('dbt_balance', $balancedata, array('user_id' => $refferId, 'currency_symbol' => $currency_symbol));
 
 					} else {
@@ -391,6 +391,6 @@ class Payment_callback extends BaseController
 		}
 	}
 
-    
+
 }
 

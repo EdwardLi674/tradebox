@@ -12,7 +12,6 @@
                             <th><?php echo display('xx_messenger') ?></th>
                             <th>Coin</th>
                             <th><?php echo display('amount') ?></th>
-                            <th><?php echo display('fees') ?></th>
                             <th><?php echo display('comments') ?></th>
                             <th><?php echo display('date') ?></th>
                             <th class="text-center"><?php echo display('action')."/".display('status'); ?></th>
@@ -30,7 +29,6 @@
                             <td><?php echo esc($value->xx_messenger); ?></td>
                             <td><?php echo esc($value->currency_symbol); ?></td>
                             <td><?php echo esc((float)$value->amount); ?></td>
-                            <td><?php echo esc((float)$value->fees_amount); ?></td>
                             <td><?php echo esc($value->comment);?></td>
                             <td>
                                 <?php

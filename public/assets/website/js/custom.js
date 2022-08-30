@@ -986,6 +986,10 @@ if (path == "transfer-confirm") {
 }
 
 $(document).ready(function () {
+  // disabline mouse scrolling of amount input
+  $("input[name=amount]").on("mousewheel", function () {
+    this.blur();
+  });
   // show popover for copying Tron address to clipboard in Deposit page
   $("#tron_address_btn").popover();
   $("#tron_address_btn").on("click", function () {

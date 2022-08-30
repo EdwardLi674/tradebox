@@ -33,7 +33,7 @@
            <input class="form-control" name="blockchain_address" type="text" id="blockchain_address" autocomplete="off" required>
         </div>
         <div class="form-group">
-           <label for="network" class=""><?php echo display('network');?> <span class="text-danger">*</span></label>
+           <label for="network" class="">Network <span class="text-danger">*</span></label>
            <input class="form-control" name="network" type="text" id="network" autocomplete="off" required placeholder="i.e. TRON, SOLANA etc">
         </div>
         <div class="form-group">
