@@ -10,8 +10,7 @@ $routes->group('backend', ['filter' => 'admin_filter', 'namespace' => 'App\Modul
     $subroutes->add('cms/themes-setting', 'CmsController::index');
     $subroutes->add('cms/page-content-list', 'CmsController::page_content_list');
     $subroutes->add('cms/add-page-content', 'CmsController::add_page_content');
-    $subroutes->add('cms/add-page-content/(:any)', 'CmsController::add_page_content/$1');
-    $subroutes->add('cms/edit-page-content/(:any)', 'CmsController::add_page_content/$1');
+    $subroutes->add('cms/edit-page-content/(:any)', 'CmsController::edit_page_content/$1');
     $subroutes->add('cms/delete-page-content/(:any)', 'CmsController::delete_page_content/$1');
 
     $subroutes->add('cms/faq-list', 'CmsController::faq_list');

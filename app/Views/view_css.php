@@ -328,4 +328,10 @@
 		text-decoration: underline;
 		color: blue;
 	}
+
+	.custom-file-label::after {
+		background-color: #121d27;
+		border: 1px solid #262d34;
+		color: #8f8e8e;
+	}
 </style>

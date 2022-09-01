@@ -16,13 +16,13 @@
                                 <ul>
                                     <?php
                                         foreach ($category as $cat_key => $cat_value) {
-                                            if ($cat_value->menu==2 || $cat_value->menu==3) { 
+                                            if ($cat_value->menu==2 || $cat_value->menu==3) {
                                                $cat_name = isset($lang) && $lang =="french"?$cat_value->cat_name_fr:$cat_value->cat_name_en;
                                                $cat_slug = $cat_value->slug;
                                                ?>
                                                <li><a href="<?php echo base_url('otherpage/'.$cat_slug); ?>"><?php echo  esc($cat_name) ?></a></li>
                                                <?php
-                                           }                               
+                                           }
                                        }
                                    ?>
                                     <li><a href="<?php echo base_url('contact') ?>">Contact</a></li>
@@ -33,7 +33,7 @@
                         <div class="link-widgets">
                             <h5 class="link-title"><?php echo display('pages');?></h5>
                             <ul>
-                                <li><a href="<?php echo base_url('news') ?>"><?php echo display('news') ?></a></li>
+                                <li><a href="<?php echo base_url('token-listing') ?>"><?php echo display('token_listing') ?></a></li>
                                 <li><a href="<?php echo base_url('login'); ?>"><?php echo display('login') ?></a></li>
                                 <li><a href="<?php echo base_url('register'); ?>"><?php echo display('register') ?></a></li>
                             </ul>
@@ -97,10 +97,10 @@
     <script src="<?php echo BASEPATH.'assets/website/js/contact.js?v=2'; ?>"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $map_api->api_key; ?>" type="text/javascript"></script>
 <?php } ?>
-<?php 
+<?php
     if ($request->uri->setSilent()->getSegment(1) == '' OR $request->uri->setSilent()->getSegment(1) == 'profile') {
-        if(!empty($session->get('message'))) echo $session->get('message'); 
-        if(!empty($session->get('exception'))) echo $session->get('exception'); 
+        if(!empty($session->get('message'))) echo $session->get('message');
+        if(!empty($session->get('exception'))) echo $session->get('exception');
     }
 ?>
 

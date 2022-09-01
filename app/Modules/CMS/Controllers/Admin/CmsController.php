@@ -194,7 +194,7 @@ class CmsController extends BaseController
         }
     }
 
-    public function add_page_content($article_id = null)
+    public function add_page_content()
     {
         $data['title']        = display('add_content');
         $data['web_language'] = $this->common_model->findById('web_language', array('id' => 1));
@@ -235,44 +235,90 @@ class CmsController extends BaseController
                     'token_id'          => $this->request->getPost('token_id', FILTER_SANITIZE_STRING)
                 );
 
-                if (empty($article_id))
-                {
-                    if ($this->common_model->save('web_article', $userdata)) {
-                        $this->session->setFlashdata('message', display('save_successfully'));
-                    } else {
-                        $this->session->setFlashdata('exception', display('please_try_again'));
-                    }
-                    return  redirect()->to(base_url('/backend/cms/add-page-content'));
+                if ($this->common_model->save('web_article', $userdata)) {
+                    $this->session->setFlashdata('message', display('save_successfully'));
                 } else {
-                    if ($this->common_model->update('web_article', $userdata, array('article_id' => $article_id))) {
-                        $this->session->setFlashdata('message', display('update_successfully'));
-                    } else {
-                        $this->session->setFlashdata('exception', display('please_try_again'));
-                    }
-                    return  redirect()->to(base_url('/backend/cms/edit-page-content/'.$article_id));
+                    $this->session->setFlashdata('exception', display('please_try_again'));
                 }
+                return  redirect()->to(base_url('/backend/cms/add-page-content'));
 
             } else {
 
                 $this->session->setFlashdata("exception", $this->validation->listErrors());
-                if(!empty($article_id)){
-                    return  redirect()->to(base_url('/backend/cms/edit-page-content/'.$article_id));
-                } else {
-                 return  redirect()->to(base_url('/backend/cms/add-page-content'));
-                }
+                return  redirect()->to(base_url('/backend/cms/add-page-content'));
             }
         }
-        if (empty($article_id)) {
-                $data['article']  = (object)$userdata = array(
-                    'article_id'  => $this->request->getPost('article_id', FILTER_SANITIZE_STRING),
-                );
-        } else {
-            //paramiter = table, where, fieldname, order
-            $data['article']   = $this->common_model->findById('web_article', array('article_id' => $article_id));
-        }
+        $data['article']  = (object)$userdata = array(
+            'article_id'  => null
+        );
 
         $data['parent_cat'] = $this->common_model->findAll('web_category', array(), 'cat_id', 'desc');
-        $data['coin'] = $this->common_model->get_all('dbt_cryptocoin', array('show_home' => 1), 'coin_position', 'asc', 12, 0, '');
+        $data['coin'] = $this->common_model->get_all('dbt_cryptocoin', array('show_home' => 1), 'coin_position', 'asc', 0, 0, '');
+
+        $data['content'] = $this->BASE_VIEW . '\article\form';
+        return $this->template->admin_layout($data);
+
+    }
+
+    public function edit_page_content($article_id = null)
+    {
+        $data['title']        = display('add_content');
+        $data['web_language'] = $this->common_model->findById('web_language', array('id' => 1));
+
+        $this->validation->setRule('headline_en',display('headline_en'),'required|max_length[1000]');
+        $this->validation->setRule('cat_id',display('category'),'required|max_length[10]');
+        $this->validation->setRule('position_serial',display('position_serial'),'required|max_length[10]|trim');
+        $this->validation->setRule('article_image', 'This Image', "ext_in[article_image,png,jpg,gif,ico]|is_image[article_image]");
+
+        if($this->request->getMethod() == 'post'){
+            if($this->validation->withRequest($this->request)->run())
+            {
+
+                $filePath = $this->imageupload->doUpload('upload/', $this->request->getFile('article_image'));
+
+                if(empty($filePath)){
+                    $image = $this->request->getVar('article_image_old');
+                } else {
+                    $image = $filePath;
+                }
+
+                $data['article']   = (object)$userdata = array(
+
+                    'article_id'        => $this->request->getPost('article_id', FILTER_SANITIZE_STRING),
+                    'headline_en'       => $this->request->getPost('headline_en', FILTER_SANITIZE_STRING),
+                    'headline_fr'       => $this->request->getPost('headline_fr', FILTER_SANITIZE_STRING),
+                    'article_image'     => $image,
+                    'article1_en'       => $this->request->getPost('article1_en'),
+                    'article1_fr'       => $this->request->getPost('article1_fr'),
+                    'article2_en'       => $this->request->getPost('article2_en'),
+                    'article2_fr'       => $this->request->getPost('article2_fr'),
+                    'video'             => $this->request->getPost('video', FILTER_SANITIZE_STRING),
+                    'cat_id'            => $this->request->getPost('cat_id', FILTER_SANITIZE_STRING),
+                    'page_content'      => 1,
+                    'position_serial'   => $this->request->getPost('position_serial', FILTER_SANITIZE_STRING),
+                    'publish_date'      => date("Y-m-d h:i:s"),
+                    'publish_by'        => $this->session->get('email'),
+                    'token_id'          => $this->request->getPost('token_id', FILTER_SANITIZE_STRING)
+                );
+
+                if ($this->common_model->update('web_article', $userdata, array('article_id' => $article_id))) {
+                    $this->session->setFlashdata('message', display('update_successfully'));
+                } else {
+                    $this->session->setFlashdata('exception', display('please_try_again'));
+                }
+                return  redirect()->to(base_url('/backend/cms/edit-page-content/'.$article_id));
+
+            } else {
+
+                $this->session->setFlashdata("exception", $this->validation->listErrors());
+                return  redirect()->to(base_url('/backend/cms/edit-page-content/'.$article_id));
+
+            }
+        }
+
+        $data['article']   = $this->common_model->findById('web_article', array('article_id' => $article_id));
+        $data['parent_cat'] = $this->common_model->findAll('web_category', array(), 'cat_id', 'desc');
+        $data['coin'] = $this->common_model->get_all('dbt_cryptocoin', array('show_home' => 1), 'coin_position', 'asc', 0, 0, '');
 
         $data['content'] = $this->BASE_VIEW . '\article\form';
         return $this->template->admin_layout($data);

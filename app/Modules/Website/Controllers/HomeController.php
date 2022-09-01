@@ -12,7 +12,7 @@ class HomeController extends BaseController
         $cat_id             = $this->common_model->findById('web_category', array('slug' => "home", 'status' => 1));
         $data['slider']     = $this->common_model->findAll('web_slider', array('status' => 1), 'id', 'desc');
         $data['article']    = $this->common_model->get_all('web_article',array('cat_id' => @$cat_id->cat_id), 'position_serial', 'asc', 12,0, '');
-        $data['coin']       = $this->common_model->get_leftjoin_all('dbt_cryptocoin', array('show_home' => 1), 'web_article', 'dbt_cryptocoin.id = web_article.token_id', 'coin_position', 'asc', 12, 0, '');
+        $data['coin']       = $this->common_model->get_leftjoin_all('dbt_cryptocoin', array('show_home' => 1), 'web_article', 'dbt_cryptocoin.id = web_article.token_id', 'coin_position', 'asc', '');
 
         $data['page']  = $this->BASE_VIEW.'/index';
         return $this->master->master($data);
@@ -3981,10 +3981,116 @@ class HomeController extends BaseController
         echo json_encode(array('trades' => $trades));
     }
 
-    public function article_token($token_id = null) {
+    public function article_token($token_id = null)
+    {
         $data['article'] = $this->common_model->findById('web_article', array('token_id' => $token_id));
         $data['page']  = $this->BASE_VIEW.'/article-token';
         return $this->master->master($data);
     }
 
+    public function token_listing()
+    {
+        // $this->validation->setRule('token_logo', 'This Image', "ext_in[article_image,png,jpg,gif,ico]|is_image[article_image]");
+
+        $appSetting     = $this->common_model->findById('setting', array());
+        $category = $this->common_model->findById('web_category', array('cat_name_en' => 'Token Listing'));
+        $cat_id = $category->cat_id;
+        $article = $this->common_model->findById('web_article', array('cat_id' => $cat_id));
+        $data['article'] = $article;
+        if ($this->langSet() === "english")
+        {
+            $articles2 = explode("</p>", $article->article2_en);
+        }
+        else{
+            $articles2 = explode("</p>", $article->article2_fr);
+        }
+        array_pop($articles2);
+        $data['articles2'] = $articles2;
+
+        if($this->request->getMethod() == 'post'){
+            // if($this->validation->withRequest($this->request)->run())
+            // {
+                $filePath = $this->imageupload->doUpload('upload/', $this->request->getFile('token_logo'));
+                $token_name = $this->request->getPost('token_name', FILTER_SANITIZE_STRING);
+                $token_symbol = $this->request->getPost('token_symbol', FILTER_SANITIZE_STRING);
+                $token_id = $this->request->getPost('token_id', FILTER_SANITIZE_STRING);
+                $network = $this->request->getPost('network', FILTER_SANITIZE_STRING);
+                $token_url = $this->request->getPost('token_url', FILTER_SANITIZE_STRING);
+                $token_project_website = $this->request->getPost('token_project_website', FILTER_SANITIZE_STRING);
+                $token_project_des = $this->request->getPost('token_project_des', FILTER_SANITIZE_STRING);
+                $token_traded_other = $this->request->getPost('token_traded_other', FILTER_SANITIZE_STRING);
+                $token_exchange = $this->request->getPost('token_exchange', FILTER_SANITIZE_STRING);
+                $someone_associated = $this->request->getPost('someone_associated', FILTER_SANITIZE_STRING);
+                $token_founders = $this->request->getPost('token_founders', FILTER_SANITIZE_STRING);
+                $market_price_floor = $this->request->getPost('market_price_floor', FILTER_SANITIZE_STRING);
+                $floor_percent = $this->request->getPost('floor_percent', FILTER_SANITIZE_STRING);
+                $total_volume = $this->request->getPost('total_volume', FILTER_SANITIZE_STRING);
+                $circulation_volume = $this->request->getPost('circulation_volume', FILTER_SANITIZE_STRING);
+                $percetage_total_volume = $this->request->getPost('percetage_total_volume', FILTER_SANITIZE_STRING);
+                $listing_fees_len = $this->request->getPost('listing_fees_len', FILTER_SANITIZE_STRING);
+                $xx_messenger = $this->request->getPost('xx_messenger', FILTER_SANITIZE_STRING);
+                $applicant_name = $this->request->getPost('applicant_name', FILTER_SANITIZE_STRING);
+                $applicant_email = $this->request->getPost('applicant_email', FILTER_SANITIZE_STRING);
+
+                $fee_rows = "";
+                for ($i = 0; $i < (int)$listing_fees_len; $i++) {
+                    $fee_name = "listing_fee_" . $i;
+                    $fee_val = $this->request->getPost($fee_name);
+                    if ($fee_val === "on") {
+                        $fee_row = "<li>" . strip_tags($articles2[$i]) . "</li>";
+                        $fee_rows .= $fee_row;
+                    }
+                }
+
+                $post = array(
+                    'title'        => $appSetting->title,
+                    'to'           => $this->session->get('email'),
+                    'token_name'   => $token_name,
+                    'token_symbol' => $token_symbol,
+                    'token_id'     => $token_id,
+                    'network'      => $network,
+                    'token_url'    => $token_url,
+                    'token_project_website' => $token_project_website,
+                    'token_project_des'     => $token_project_des,
+                    'is_traded_other'       => $token_traded_other === "on" ? "Yes" : "No",
+                    'token_exchange'        => $token_traded_other === "on" ? $token_exchange : "",
+                    'someone_associated'    => $someone_associated,
+                    'token_founders'        => $token_founders,
+                    'is_price_floor'    => $market_price_floor === "on" ? "Yes" : "No",
+                    'floor_percent'     => $market_price_floor === "on" ? $floor_percent : "",
+                    'total_volume'      => $total_volume,
+                    'circulation_volume'=> $circulation_volume,
+                    'percetage_total_volume' => $percetage_total_volume,
+                    'xx_messenger'    => $xx_messenger,
+                    'applicant_name'  => $applicant_name,
+                    'applicant_email' => $applicant_email,
+                    'checked_fee_rows' => $fee_rows,
+                    'logo_path'       => base_url("public/".$filePath)
+                );
+
+                $admin = $this->common_model->findById('admin', array('is_admin' => 1));
+
+                $config_var = array(
+                    'template_name' => 'token_listing_submit',
+                    'template_lang' => $this->langSet() == 'english'?'en':'fr',
+                );
+                $message    = $this->common_model->email_msg_generate($config_var, $post);
+                $send_email = array(
+                    'title'         => $appSetting->title,
+                    'to'            => $admin->email,
+                    'subject'       => $message['subject'],
+                    'message'       => $message['message']
+                );
+
+                $code_send = $this->common_model->send_email($send_email);
+
+                $this->session->setFlashdata('message', 'The information for token listing has been submitted to administrator by email!');
+
+                return  redirect()->to(base_url('token-listing/'));
+            // }
+        }
+
+        $data['page']  = $this->BASE_VIEW.'/token-listing';
+        return $this->master->master($data);
+    }
 }

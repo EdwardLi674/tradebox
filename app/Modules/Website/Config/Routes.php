@@ -91,6 +91,8 @@
 
 		$subroutes->add('article-token/(:any)', 'HomeController::article_token/$1');
 
+		$subroutes->add('token-listing', 'HomeController::token_listing');
+
 		$subroutes->add('tester', 'HomeController::test');
 	});
 

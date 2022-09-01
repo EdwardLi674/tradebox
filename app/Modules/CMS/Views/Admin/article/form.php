@@ -16,7 +16,13 @@
             <div class="card-body">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="border_preview">
-                <?php echo form_open_multipart(base_url("backend/cms/add-page-content/$article->article_id")) ?>
+                <?php
+                    if (is_null($article->article_id)) {
+                        echo form_open_multipart(base_url("backend/cms/add-page-content"));
+                    } else {
+                        echo form_open_multipart(base_url("backend/cms/edit-page-content/$article->article_id"));
+                    }
+                ?>
                 <?php echo form_hidden('article_id', @$article->article_id) ?>
                     <div class="form-group row">
                         <label for="headline_en" class="col-sm-2 col-form-label font-weight-600"><?php echo display('headline_en') ?><i class="text-danger">*</i></label>
