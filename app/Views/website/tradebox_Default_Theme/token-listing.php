@@ -114,6 +114,10 @@
       <input class="form-control" name="percetage_total_volume" type="text" id="percetage_total_volume" autocomplete="off" required>
     </div>
     <div class="form-group mb-4">
+      <label for="initial_price_token" class=""><?php echo display('initial_price_propose_token');?></label>
+      <input class="form-control w-50" name="initial_price_token" type="number" id="initial_price_token" autocomplete="off">
+    </div>
+    <div class="form-group mb-4">
       <label class="font-weight-bold">Note:</label>
       <div class="text-white"><?php if (isset($lang) && $lang =="french") { echo htmlspecialchars_decode($article->article1_fr); } else { echo htmlspecialchars_decode($article->article1_en); } ?></div>
     </div>
@@ -188,7 +192,7 @@ $(document).ready(function() {
     }
   })
 
-  $("#floor_percent").on("mousewheel", function () {
+  $("input[type=number]").on("mousewheel", function () {
     this.blur();
   });
 })

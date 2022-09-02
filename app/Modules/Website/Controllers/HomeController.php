@@ -4031,6 +4031,7 @@ class HomeController extends BaseController
                 $xx_messenger = $this->request->getPost('xx_messenger', FILTER_SANITIZE_STRING);
                 $applicant_name = $this->request->getPost('applicant_name', FILTER_SANITIZE_STRING);
                 $applicant_email = $this->request->getPost('applicant_email', FILTER_SANITIZE_STRING);
+                $initial_price_token = $this->request->getPost('initial_price_token', FILTER_SANITIZE_STRING);
 
                 $fee_rows = "";
                 for ($i = 0; $i < (int)$listing_fees_len; $i++) {
@@ -4065,6 +4066,7 @@ class HomeController extends BaseController
                     'applicant_name'  => $applicant_name,
                     'applicant_email' => $applicant_email,
                     'checked_fee_rows' => $fee_rows,
+                    'initial_price_token' => $initial_price_token,
                     'logo_path'       => base_url("public/".$filePath)
                 );
 
