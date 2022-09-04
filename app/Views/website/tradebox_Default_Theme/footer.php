@@ -44,9 +44,24 @@
                             <?php if ($social_link) { ?>
                                 <h5 class="link-title"><?php echo display('footer_menu3') ?></h5>
                                 <ul>
-                                    <?php   foreach ($social_link as $key => $value) { ?>
-                                        <li><a target="_blank" href="<?php echo htmlspecialchars_decode($value->link); ?>"><i class="fab fa-<?php echo esc($value->icon); ?>"></i> <?php echo esc($value->name); ?></a></li>
-                                    <?php } ?>
+                                    <?php
+                                        foreach ($social_link as $key => $value) {
+                                            if ($value->name === "PressClub World") {
+                                    ?>
+                                                <li>
+                                                    <a target="_blank" href="<?php echo htmlspecialchars_decode($value->link); ?>">
+                                                        <img src="<?php echo base_url("public/assets/images/icons/PCW_logo.png") ?>" class="img-fluid" alt="..." style="border-radius: 50%; width:16px; margin-right: 9px" >
+                                                        <?php echo esc($value->name); ?>
+                                                    </a>
+                                                </li>
+                                    <?php
+                                            } else {
+                                    ?>
+                                                <li><a target="_blank" href="<?php echo htmlspecialchars_decode($value->link); ?>"><i class="fab fa-<?php echo esc($value->icon); ?>"></i> <?php echo esc($value->name); ?></a></li>
+                                    <?php
+                                                }
+                                            }
+                                    ?>
                                 </ul>
                             <?php } ?>
                         </div>

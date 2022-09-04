@@ -115,7 +115,7 @@
     </div>
     <div class="form-group mb-4">
       <label for="initial_price_token" class=""><?php echo display('initial_price_propose_token');?></label>
-      <input class="form-control w-50" name="initial_price_token" type="number" id="initial_price_token" autocomplete="off">
+      <input class="form-control w-50" name="initial_price_token" type="text" id="initial_price_token" autocomplete="off">
     </div>
     <div class="form-group mb-4">
       <label class="font-weight-bold">Note:</label>

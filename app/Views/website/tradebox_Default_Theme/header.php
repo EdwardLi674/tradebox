@@ -1,4 +1,4 @@
-<?php 
+<?php
     $request = \Config\Services::request();
     $home_menu = $request->uri->setSilent()->getSegment(1);;
     $menu_cls = '';
@@ -6,8 +6,8 @@
     $div_end = '';
     if ($home_menu) {
 
-        $menu_cls ='navbar-dark bg-kingfisher-daisy';   
-                     
+        $menu_cls ='navbar-dark bg-kingfisher-daisy';
+
     } else {
 
         $menu_cls = 'bg-transparent';
@@ -91,7 +91,7 @@
                                 $path       = 'app/Modules/';
                                 $map        = directory_map($path);
                                 $CUSTOMERMENU  = array();
-                                  
+
                                 if(is_array($map) && sizeof($map) > 0) {
                                     foreach ($map as $key => $value) {
                                         $menu = str_replace("\\", '/', $path . $key . 'Config/Customer_menu.php');
@@ -101,10 +101,10 @@
                                         }
                                     }
                                 }
-                                  
+
                                 $shortkeys = array_column($CUSTOMERMENU, 'order');
                                 array_multisort($shortkeys, SORT_ASC, $CUSTOMERMENU);
-                                  
+
                                 foreach ($CUSTOMERMENU as $module => $parent) {
 
                                   if ($parent['status'] == 0) {
@@ -113,7 +113,7 @@
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <?php echo trim($parent['parent']); ?>
                                         </a>
-                                        
+
                                 </li>
                             <?php } else if ($parent['status'] == 1) { ?>
 
@@ -129,9 +129,12 @@
                                             <?php } ?>
                                         </div>
                                     </li>
-                            <?php }} ?> 
+                            <?php }} ?>
 
-                            <?php 
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo base_url("token-listing") ?>"><?php echo display('token_listing') ?></a>
+                            </li>
+                            <?php
                                 if($session->get('user_id') != NULL){
                             ?>
                             <li class="nav-item dropdown">
@@ -166,7 +169,7 @@
                         <?php } ?>
                     </div>
                 </div>
-            </nav>  
+            </nav>
             <!-- /.End of navbar -->
             <nav id="sidebar">
                 <div id="dismiss">
@@ -174,9 +177,9 @@
                 </div>
                 <ul class="metismenu list-unstyled" id="mobile-menu">
                     <li class="active"><a href="<?php echo base_url() ?>"><?php echo display('home') ?></a></li>
-                    
+
                     <li><a href="<?php echo base_url("exchange?market=".@$query_pair->symbol) ?>"><?php echo display('exchange') ?></a></li>
-                      
+
                     <li>
                         <a href="#" aria-expanded="false"><?php echo display('finance') ?><span class="fa arrow"></span></a>
                         <ul aria-expanded="false">
@@ -200,7 +203,7 @@
                       $path       = 'app/Modules/';
                       $map        = directory_map($path);
                       $CUSTOMERMENU  = array();
-                      
+
                       if (is_array($map) && sizeof($map) > 0) {
                           foreach ($map as $key => $value) {
                               $menu = str_replace("\\", '/', $path . $key . 'Config/Customer_menu.php');
@@ -210,7 +213,7 @@
                               }
                           }
                       }
-                      
+
                       $shortkeys = array_column($CUSTOMERMENU, 'order');
                       array_multisort($shortkeys, SORT_ASC, $CUSTOMERMENU);
 
@@ -222,15 +225,15 @@
 
                         <li>
                             <a href="#" aria-expanded="false"><?php echo trim($parent['parent']); ?><span class="fa arrow"></span></a>
-                              
+
                              <ul aria-expanded="false">
                                 <?php foreach ($parent['submenu'] as $key => $child) { ?>
                                     <li><a href="<?php echo base_url($child['link']) ?>"><?php echo $child['name'] ?></a></li>
                                 <?php } ?>
                             </ul>
                         </li>
-                    <?php }} ?> 
-                    
+                    <?php }} ?>
+
                     <?php if($session->get('user_id') != NULL){?>
                     <li>
                         <a href="#" aria-expanded="false"><?php echo display('account') ?><span class="fa arrow"></span></a>
@@ -240,14 +243,13 @@
                             <li><a href="<?php echo base_url('profile'); ?>"><?php echo display('profile') ?></a></li>
                             <li><a href="<?php echo base_url('customer/auth/logout'); ?>"><?php echo display('logout'); ?></a></li>
                         </ul>
-                    </li>                           
+                    </li>
                     <?php } else { ?>
                     <li><a href="<?php echo base_url('login') ?>"><?php echo display('login') ?></a></li>
                     <li><a href="<?php echo base_url('register') ?>"><?php echo display('register') ?></a></li>
-                    <?php } ?>                    
+                    <?php } ?>
 
                 </ul>
             </nav>
             <div class="overlay"></div>
             <!-- /.End of sidebar nav -->
-            

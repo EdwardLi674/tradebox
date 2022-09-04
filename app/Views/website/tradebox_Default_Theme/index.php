@@ -5,9 +5,9 @@
     <?php
     $i=0;
     foreach ($slider as $key => $value) {
-        $slide_h1 =  isset($lang) && $lang =="french"?$value->slider_h1_fr:$value->slider_h1_en;
-        $slide_h2 =  isset($lang) && $lang =="french"?$value->slider_h2_fr:$value->slider_h2_en;
-        $slide_h3 =  isset($lang) && $lang =="french"?$value->slider_h3_fr:$value->slider_h3_en;
+        $title =  isset($lang) && $lang =="french"?$value->title_fr:$value->title_en;
+        $text =  isset($lang) && $lang =="french"?$value->text_fr:$value->text_en;
+        $button =  isset($lang) && $lang =="french"?$value->button_fr:$value->button_en;
         $custom_url = $value->custom_url;
     ?>
     <?php if ($i==0) { ?>
@@ -18,11 +18,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="slide-text text-center">
-                                    <h2><?php echo htmlspecialchars_decode($slide_h1); ?></h2>
-                                    <p><?php echo htmlspecialchars_decode($slide_h2); ?></p>
+                                <div class="slide-text">
+                                    <h2><?php echo htmlspecialchars_decode($title); ?></h2>
+                                    <div><?php echo htmlspecialchars_decode($text); ?></div>
                                     <div class="slide-buttons">
-                                        <a href="<?php echo htmlspecialchars_decode($custom_url); ?>" class="slide-btn btn-kingfisher-daisy"><?php echo htmlspecialchars_decode($slide_h3); ?></a>
+                                        <a href="<?php echo htmlspecialchars_decode($custom_url); ?>" class="slide-btn btn-kingfisher-daisy"><?php echo htmlspecialchars_decode($button); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -40,10 +40,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="slide-text">
-                                    <h2><?php echo htmlspecialchars_decode($slide_h1); ?></h2>
-                                    <p><?php echo htmlspecialchars_decode($slide_h2); ?></p>
+                                    <h2><?php echo htmlspecialchars_decode($title); ?></h2>
+                                    <div><?php echo htmlspecialchars_decode($text); ?></div>
                                     <div class="slide-buttons">
-                                        <a href="<?php echo htmlspecialchars_decode($custom_url); ?>" class="slide-btn btn-kingfisher-daisy"><?php echo htmlspecialchars_decode($slide_h3); ?></a>
+                                        <a href="<?php echo htmlspecialchars_decode($custom_url); ?>" class="slide-btn btn-kingfisher-daisy"><?php echo htmlspecialchars_decode($button); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -60,11 +60,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="slide-text text-right">
-                                    <h2><?php echo htmlspecialchars_decode($slide_h1); ?></h2>
-                                    <p><?php echo htmlspecialchars_decode($slide_h2); ?></p>
+                                <div class="slide-text">
+                                    <h2><?php echo htmlspecialchars_decode($title); ?></h2>
+                                    <div><?php echo htmlspecialchars_decode($text); ?></div>
                                     <div class="slide-buttons">
-                                        <a href="#<?php echo htmlspecialchars_decode($custom_url); ?>" class="slide-btn btn-kingfisher-daisy"><?php echo htmlspecialchars_decode($slide_h3); ?></a>
+                                        <a href="#<?php echo htmlspecialchars_decode($custom_url); ?>" class="slide-btn btn-kingfisher-daisy"><?php echo htmlspecialchars_decode($button); ?></a>
                                     </div>
                                 </div>
                             </div>
@@ -129,24 +129,3 @@
 <!--  ./End of price spike -->
 
 <!-- /.End of live exchange -->
-<div class="newslatter">
-    <div class="container">
-         <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-6">
-                <div class="newslatter-text">
-                    <h3><?php echo display('email_newslatter'); ?></h3>
-                    <p><?php echo display('subscribe_to_our_newsletter'); ?></p>
-                </div>
-                <?php echo form_open('subscribe','id="subscribeForm"  class="newsletter-form" name="subscribeForm" '); ?>
-                <div class="input-group newslatter-form">
-                    <input type="email" name="subscribe_email"class="form-control" placeholder="example@mail.com" required>
-                    <div class="input-group-append">
-                        <button class="btn btn-kingfisher-daisy" type="submit"><?php echo display('submit') ?></button>
-                    </div>
-                </div>
-                <?php echo form_close() ?>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /.End of newslatter -->

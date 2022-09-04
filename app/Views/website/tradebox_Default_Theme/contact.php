@@ -1,53 +1,38 @@
     <div class="container contactPage-content">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-12 col-lg-7">
-                <div class="contect-des">
-                    <div class="contact-header">
-                        <h2><span class="headline"><?php echo display('contact_with_us');?></span></h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6 col-lg-6">
-                            <div class="media contact-service">
-                                <i class="fas fa-map-marker-alt fa-3x"></i>&nbsp;
-                                <div class="media-body">
-                                    <h4 class="mt-0"><?php echo display('address');?></h4>
-                                    <div><?php echo esc(@$settings->description); ?></div>
-                                </div>
-                            </div>
-                            <div class="media contact-service">
-                                <i class="far fa-clock fa-3x"></i>&nbsp;
-                                <div class="media-body">
-                                    <h4><?php echo display('working_hours');?></h4>
-                                    <div>
-                                        <?php echo htmlspecialchars_decode(@$settings->office_time); ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-6">
-                            <div class="media contact-service">
-                                <i class="far fa-envelope fa-3x"></i>&nbsp;
-                                <div class="media-body">
-                                    <h4><?php echo display('email_address');?></h4>
-                                    <div><?php echo esc($settings->email);?></div>
-                                </div>
-                            </div>
-                            <div class="media contact-service">
-                                <i class="fas fa-phone fa-3x"></i>&nbsp;
-                                <div class="media-body">
-                                    <h4><?php echo display('phone_number');?></h4>
-                                    <div><?php echo htmlspecialchars_decode(@$settings->phone); ?></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="contect-des">
+            <div class="contact-header">
+                <h2><span class="headline"><?php echo display('contact_with_us');?></span></h2>
             </div>
-            <div class="col-md-12 col-lg-5">
-                <div class="map-content">
-                    <div id="map"></div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="media contact-service">
+                        <i class="far fa-clock fa-3x"></i>&nbsp;
+                        <div class="media-body">
+                            <h4><?php echo display('working_hours');?></h4>
+                            <div>
+                                <?php echo htmlspecialchars_decode(@$settings->office_time); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media contact-service">
+                        <i class="far fa-envelope fa-3x"></i>&nbsp;
+                        <div class="media-body">
+                            <h4><?php echo display('email_address');?></h4>
+                            <div><?php echo esc($settings->email);?></div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.End of map content -->
+                <div class="col-6">
+                    <div class="media contact-service">
+                        <div class="media-body">
+                            <h4><?php echo display('ultra_secure_xx_messenger');?></h4>
+                            <div>ZeroFees</div>
+                        </div>
+                    </div>
+                    <div class="bg-white" style="width: 200px; height: 190px">
+                        <img src="<?php echo base_url("public/assets/images/icons/QR_code.png") ?>" class="rounded img-fluid" alt="...">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

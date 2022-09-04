@@ -952,12 +952,13 @@ class CmsController extends BaseController
     }
 
 
-    public function add_slider($id = null)
+    public function add_slider()
     {
         $data['title']        = display('add_content');
         $data['web_language'] = $this->common_model->findById('web_language', array('id' => 1));
 
-        $this->validation->setRule('slider_h1_en', display('slider_h1_en'),'required|max_length[1000]');
+        $this->validation->setRule('title_en', display('slider_title_english'),'required|max_length[1000]');
+        $this->validation->setRule('button_en', display('slider_button_en'),'required|max_length[1000]');
         $this->validation->setRule('slider_img', display('slider_img'), 'ext_in[slider_img,png,jpg,gif,ico]|is_image[slider_img]');
 
         if($this->validation->withRequest($this->request)->run()){
@@ -973,12 +974,83 @@ class CmsController extends BaseController
 
             $data['slider']   = (object)$sliderdata = array(
 
-                'slider_h1_en'  => $this->request->getPost('slider_h1_en', FILTER_SANITIZE_STRING),
-                'slider_h1_fr'  => $this->request->getPost('slider_h1_fr', FILTER_SANITIZE_STRING),
-                'slider_h2_en'  => $this->request->getPost('slider_h2_en', FILTER_SANITIZE_STRING),
-                'slider_h2_fr'  => $this->request->getPost('slider_h2_fr', FILTER_SANITIZE_STRING),
-                'slider_h3_en'  => $this->request->getPost('slider_h3_en', FILTER_SANITIZE_STRING),
-                'slider_h3_fr'  => $this->request->getPost('slider_h3_fr', FILTER_SANITIZE_STRING),
+                'title_en'  => $this->request->getPost('title_en', FILTER_SANITIZE_STRING),
+                'title_fr'  => $this->request->getPost('title_fr', FILTER_SANITIZE_STRING),
+                'text_en'  => $this->request->getPost('text_en'),
+                'text_fr'  => $this->request->getPost('text_fr'),
+                'button_en'  => $this->request->getPost('button_en', FILTER_SANITIZE_STRING),
+                'button_fr'  => $this->request->getPost('button_fr', FILTER_SANITIZE_STRING),
+                'slider_img'    => $image_path,
+                'custom_url'    => $this->request->getPost('custom_url', FILTER_SANITIZE_STRING),
+                'status'        => $this->request->getPost('status', FILTER_SANITIZE_STRING)
+            );
+
+            //From Validation Check
+            if ($this->validation->withRequest($this->request)->run()) {
+                if ($this->common_model->save('web_slider', $sliderdata)) {
+                    $this->session->setFlashdata('message', display('save_successfully'));
+
+                } else {
+                    $this->session->setFlashdata('exception', display('please_try_again'));
+                }
+                return  redirect()->to(base_url('/backend/cms/add-slider'));
+            } else {
+                $this->session->setFlashdata("exception", $this->validation->listErrors());
+                return  redirect()->to(base_url('/backend/cms/slider-list'));
+            }
+        } else {
+
+            $data['slider']   = (object)$sliderdata = array(
+
+                'id'            => null,
+                'title_en'  => '',
+                'title_fr'  => '',
+                'text_en'  => '',
+                'text_fr'  => '',
+                'button_en'  => '',
+                'button_fr'  => '',
+                'slider_img'    => '',
+                'custom_url'    => '',
+                'status'        => ''
+            );
+
+            $data['content']  = $this->BASE_VIEW . '\slider\form';
+            return $this->template->admin_layout($data);
+        }
+    }
+
+    public function edit_slider($id = null)
+    {
+        $data['title']        = display('add_content');
+        $data['web_language'] = $this->common_model->findById('web_language', array('id' => 1));
+
+        $this->validation->setRule('title_en', display('slider_title_english'),'required|max_length[1000]');
+        $this->validation->setRule('button_en', display('slider_button_en'),'required|max_length[1000]');
+        $this->validation->setRule('slider_img', display('slider_img'), 'ext_in[slider_img,png,jpg,gif,ico]|is_image[slider_img]');
+
+        if($this->validation->withRequest($this->request)->run()){
+
+            $filePath = $this->imageupload->upload_image($this->request->getFile('slider_img'), 'upload/slider/', $this->request->getPost('slider_img_old'), 1200, 800);
+            if(empty($filePath)){
+                $image_path = $this->request->getVar('slider_img_old');
+            } else {
+                $image_path = $filePath;
+            }
+        } else {
+
+            $image_path = "";
+        }
+
+        if($this->request->getMethod() == 'post'){
+
+            $data['slider']   = (object)$sliderdata = array(
+
+                'title_en'  => $this->request->getPost('title_en', FILTER_SANITIZE_STRING),
+                'title_fr'  => $this->request->getPost('title_fr', FILTER_SANITIZE_STRING),
+                'text_en'  => $this->request->getPost('text_en'),
+                'text_fr'  => $this->request->getPost('text_fr'),
+                'button_en'  => $this->request->getPost('button_en', FILTER_SANITIZE_STRING),
+                'button_fr'  => $this->request->getPost('button_fr', FILTER_SANITIZE_STRING),
                 'slider_img'    => $image_path,
                 'custom_url'    => $this->request->getPost('custom_url', FILTER_SANITIZE_STRING),
                 'status'        => $this->request->getPost('status', FILTER_SANITIZE_STRING)
@@ -987,25 +1059,14 @@ class CmsController extends BaseController
             //From Validation Check
             if ($this->validation->withRequest($this->request)->run()) {
 
-                if (empty($id))
-                {
-                    if ($this->common_model->save('web_slider', $sliderdata)) {
-                        $this->session->setFlashdata('message', display('save_successfully'));
+                if ($this->common_model->update('web_slider', $sliderdata, array('id' => $id))) {
+                    $this->session->setFlashdata('message', display('update_successfully'));
 
-                    } else {
-                        $this->session->setFlashdata('exception', display('please_try_again'));
-
-                    }
-                    return  redirect()->to(base_url('/backend/cms/add-slider'));
                 } else {
-                    if ($this->common_model->update('web_slider', $sliderdata, array('id' => $id))) {
-                        $this->session->setFlashdata('message', display('update_successfully'));
-
-                    } else {
-                        $this->session->setFlashdata('exception', display('please_try_again'));
-                    }
-                    return  redirect()->to(base_url('/backend/cms/edit-slider/'.$id));
+                    $this->session->setFlashdata('exception', display('please_try_again'));
                 }
+                return  redirect()->to(base_url('/backend/cms/edit-slider/'.$id));
+
             } else {
 
                 $this->session->setFlashdata("exception", $this->validation->listErrors());
@@ -1014,26 +1075,9 @@ class CmsController extends BaseController
 
         } else {
 
-            if(!empty($id)) {
-
-                $data['slider'] = $this->common_model->findById('web_slider', array('id' => $id));
-            } else {
-                $data['slider']   = (object)$sliderdata = array(
-
-                    'id'            => '',
-                    'slider_h1_en'  => '',
-                    'slider_h1_fr'  => '',
-                    'slider_h2_en'  => '',
-                    'slider_h2_fr'  => '',
-                    'slider_h3_en'  => '',
-                    'slider_h3_fr'  => '',
-                    'slider_img'    => '',
-                    'custom_url'    => '',
-                    'status'        => ''
-                );
-            }
-
+            $data['slider'] = $this->common_model->findById('web_slider', array('id' => $id));
             $data['content']  = $this->BASE_VIEW . '\slider\form';
+
             return $this->template->admin_layout($data);
         }
     }

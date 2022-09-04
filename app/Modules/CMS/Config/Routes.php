@@ -41,8 +41,7 @@ $routes->group('backend', ['filter' => 'admin_filter', 'namespace' => 'App\Modul
 
     $subroutes->add('cms/slider-list', 'CmsController::slider_list');
     $subroutes->add('cms/add-slider', 'CmsController::add_slider');
-    $subroutes->add('cms/add-slider/(:any)', 'CmsController::add_slider/$1');
-    $subroutes->add('cms/edit-slider/(:any)', 'CmsController::add_slider/$1');
+    $subroutes->add('cms/edit-slider/(:any)', 'CmsController::edit_slider/$1');
     $subroutes->add('cms/delete-slider/(:any)', 'CmsController::delete_slider/$1');
 
     $subroutes->add('cms/social-link-list', 'CmsController::social_link_list');

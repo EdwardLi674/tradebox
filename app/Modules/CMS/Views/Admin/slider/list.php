@@ -16,23 +16,25 @@
             <div class="card-body">
                 <table id="example" class="table table-bordered table-hover">
                     <thead>
-                        <tr> 
+                        <tr>
                             <th width="50"><?php echo display('sl_no') ?></th>
-                            <th><?php echo display('slider_h1_en') ?></th>
-                            <th><?php echo display('slider_h1')." ".esc($web_language->name) ?></th>
+                            <th><?php echo display('slider_title_english') ?></th>
+                            <th><?php echo display('slider_text_en') ?></th>
+                            <th><?php echo display('slider_button_en') ?></th>
                             <th><?php echo display('image') ?></th>
                             <th><?php echo display('status') ?></th>
                             <th width="80"><?php echo display('action') ?></th>
                         </tr>
-                    </thead>    
+                    </thead>
                     <tbody>
                         <?php if (!empty($slider)) ?>
                         <?php $sl = 1; ?>
                         <?php foreach ($slider as $value) { ?>
                         <tr>
-                            <td><?php echo $sl++; ?></td> 
-                            <td><?php echo htmlspecialchars_decode($value->slider_h1_en); ?></td>
-                            <td><?php echo htmlspecialchars_decode($value->slider_h1_fr); ?></td>
+                            <td><?php echo $sl++; ?></td>
+                            <td><?php echo htmlspecialchars_decode($value->title_en); ?></td>
+                            <td><?php echo htmlspecialchars_decode($value->text_en); ?></td>
+                            <td><?php echo htmlspecialchars_decode($value->button_en); ?></td>
                             <td><img src="<?php echo IMAGEPATH.$value->slider_img; ?>" width="150" /></td>
                             <td><?php echo (($value->status==1)?display('active'):display('inactive')); ?></td>
                             <td>
@@ -40,11 +42,11 @@
                                 <a href="<?php echo base_url("backend/cms/delete-slider/$value->id") ?>" onclick="return confirm('<?php echo display("are_you_sure") ?>')" class="btn btn-danger btn-sm" title="Delete "><i class="hvr-buzz-out fas fa-trash"></i></a>
                             </td>
                         </tr>
-                        <?php } ?>  
+                        <?php } ?>
                     </tbody>
                 </table>
                 <?php echo htmlspecialchars_decode($pager); ?>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
