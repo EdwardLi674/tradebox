@@ -12,10 +12,23 @@ class HomeController extends BaseController
         $cat_id             = $this->common_model->findById('web_category', array('slug' => "home", 'status' => 1));
         $data['slider']     = $this->common_model->findAll('web_slider', array('status' => 1), 'id', 'desc');
         $data['article']    = $this->common_model->get_all('web_article',array('cat_id' => @$cat_id->cat_id), 'position_serial', 'asc', 12,0, '');
-        $data['coin']       = $this->common_model->get_leftjoin_all('dbt_cryptocoin', array('show_home' => 1), 'web_article', 'dbt_cryptocoin.id = web_article.token_id', 'coin_position', 'asc', '');
+        $setting      = $this->common_model->findById('setting', array());
+        $data['number_token_cards'] = $setting->number_token_cards;
+        $data['coin']       = $this->common_model->get_leftjoin_all('dbt_cryptocoin', array('show_home' => 1), 'web_article', 'dbt_cryptocoin.id = web_article.token_id', 'coin_position', 'asc', $setting->number_token_cards, 0, '');
+        $all_coins       = $this->common_model->get_all('dbt_cryptocoin', array('show_home' => 1), 'coin_position', 'asc', 0, 0, '');
+        $data['number_all_tokens'] = count($all_coins);
 
         $data['page']  = $this->BASE_VIEW.'/index';
         return $this->master->master($data);
+    }
+
+    public function more_tokens() {
+        $setting = $this->common_model->findById('setting', array());
+        $offset = $setting->number_token_cards;
+        $all_coins = $this->common_model->get_all('dbt_cryptocoin', array('show_home' => 1), 'coin_position', 'asc', 0, 0, '');
+        $limit = count($all_coins) - $setting->number_token_cards;
+        $rest_coins = $this->common_model->get_leftjoin_all('dbt_cryptocoin', array('show_home' => 1), 'web_article', 'dbt_cryptocoin.id = web_article.token_id', 'coin_position', 'asc', $limit, $offset, '');
+        echo json_encode($rest_coins);
     }
 
     public function test() {

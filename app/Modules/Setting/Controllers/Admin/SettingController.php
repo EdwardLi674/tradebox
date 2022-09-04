@@ -14,7 +14,7 @@ class SettingController extends BaseController
             ]);
         }
     }
-  
+
     public function index(){
 
 
@@ -24,14 +24,14 @@ class SettingController extends BaseController
         $this->validation->setRule('description', display('address') ,'max_length[255]');
         $this->validation->setRule('email',display('email'),'max_length[100]|valid_email');
         $this->validation->setRule('phone',display('phone'),'max_length[20]');
-        $this->validation->setRule('language',display('language'),'max_length[250]'); 
-        $this->validation->setRule('footer_text',display('footer_text'),'max_length[255]'); 
-        $this->validation->setRule('time_zone',display('time_zone'),'required|max_length[100]'); 
+        $this->validation->setRule('language',display('language'),'max_length[250]');
+        $this->validation->setRule('footer_text',display('footer_text'),'max_length[255]');
+        $this->validation->setRule('time_zone',display('time_zone'),'required|max_length[100]');
         #-------------validation end------------------#
         $this->validation->setRule('favicon', "Favicon", "ext_in[favicon,png,jpg,gif,ico]|is_image[favicon]");
         $this->validation->setRule('logo', display('dashboard_logo'), "ext_in[logo,png,jpg,gif,ico]|is_image[logo]");
         $this->validation->setRule('logo_web', display('dashboard_logo'), "ext_in[logo_web,png,jpg,gif,ico]|is_image[logo_web]");
-      
+
 
         if($this->validation->withRequest($this->request)->run()){
 
@@ -59,7 +59,7 @@ class SettingController extends BaseController
         }
 
         $data['setting'] = (object)$postData = [
-            
+
             'setting_id'  => $this->request->getPost('setting_id', FILTER_SANITIZE_STRING),
             'title'       => $this->request->getPost('title', FILTER_SANITIZE_STRING),
             'description' => $this->request->getPost('description', FILTER_SANITIZE_STRING),
@@ -68,20 +68,21 @@ class SettingController extends BaseController
             'logo'        => $logo_image_path,
             'logo_web'    => $logo_web_image_path,
             'favicon'     => $favicon_image_path,
-            'language'    => $this->request->getPost('language', FILTER_SANITIZE_STRING), 
-            'time_zone'   => $this->request->getPost('time_zone', FILTER_SANITIZE_STRING), 
-            'site_align'  => $this->request->getPost('site_align', FILTER_SANITIZE_STRING), 
-            'office_time' => $this->request->getPost('office_time', FILTER_SANITIZE_STRING), 
-            'latitude'    => $this->request->getPost('latitude', FILTER_SANITIZE_STRING), 
+            'language'    => $this->request->getPost('language', FILTER_SANITIZE_STRING),
+            'time_zone'   => $this->request->getPost('time_zone', FILTER_SANITIZE_STRING),
+            'site_align'  => $this->request->getPost('site_align', FILTER_SANITIZE_STRING),
+            'office_time' => $this->request->getPost('office_time', FILTER_SANITIZE_STRING),
+            'latitude'    => $this->request->getPost('latitude', FILTER_SANITIZE_STRING),
             'footer_text' => $this->request->getPost('footer_text', FILTER_SANITIZE_STRING),
-        ]; 
+            'number_token_cards' => $this->request->getPost('number_token_cards', FILTER_SANITIZE_STRING),
+        ];
 
         if($this->request->getMethod() == 'post'){
 
             //From Validation Check
             if ($this->validation->withRequest($this->request)->run()) {
 
-                if (empty($postData['setting_id'])) 
+                if (empty($postData['setting_id']))
                 {
                     if ($this->common_model->save('setting', $postData)) {
                         $this->session->setFlashdata('message', display('save_successfully'));
@@ -107,7 +108,7 @@ class SettingController extends BaseController
 
                 }
 
-            } else { 
+            } else {
 
                 $this->session->setFlashdata("exception", $this->validation->listErrors());
                 return  redirect()->to(base_url('/backend/setting/app-setting'));
@@ -115,7 +116,7 @@ class SettingController extends BaseController
 
         } else {
 
-            $data['languageList'] = $this->languageList(); 
+            $data['languageList'] = $this->languageList();
             $data['setting']      = $this->common_model->findById('setting', array());
 
             $data['content'] = $this->BASE_VIEW . '\settings\setting';
@@ -124,13 +125,13 @@ class SettingController extends BaseController
     }
 
     public function languageList()
-    { 
-        if ($this->db->tableExists("language")) { 
+    {
+        if ($this->db->tableExists("language")) {
 
             $fields = $this->db->getFielddata("language");
             $i = 1;
             foreach ($fields as $field)
-            {  
+            {
                 if ($i++ > 2)
                 $result[$field->name] = ucfirst($field->name);
             }
@@ -149,7 +150,7 @@ class SettingController extends BaseController
         $this->check_setting();
         #-------------validation start------------------#
         $this->validation->setRule('site_key','Site Key','required|trim');
-        $this->validation->setRule('secret_key','Secret Key','required|trim'); 
+        $this->validation->setRule('secret_key','Secret Key','required|trim');
         #-------------validation end------------------#
 
         if($this->request->getMethod() == 'post'){
@@ -172,7 +173,7 @@ class SettingController extends BaseController
                 $this->session->setFlashdata('message','Update Successfully!');
                 return redirect()->route('backend/setting/security');
 
-            } else { 
+            } else {
 
                 $this->session->setFlashdata("exception", $this->validation->listErrors());
                 return redirect()->route('backend/setting/security');
@@ -182,7 +183,7 @@ class SettingController extends BaseController
 
             $data['security']     = $this->db->table('dbt_security')->select('*')->get()->getResult();
             $data['url']          = "http://".$_SERVER["HTTP_HOST"].str_replace(basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]);
-            $data['languageList'] = $this->languageList(); 
+            $data['languageList'] = $this->languageList();
             $data['setting']      = $this->common_model->findById('setting', array());
 
             $data['content'] = $this->BASE_VIEW . '\settings\security';
@@ -205,8 +206,8 @@ class SettingController extends BaseController
     }
 
     public function delete_block($id = null)
-    { 
-       
+    {
+
         if ($this->common_model->delete('dbt_blocklist', array('id' => $id))){
             $this->session->setFlashdata('message', display('delete_successfully'));
         } else {
@@ -237,7 +238,7 @@ class SettingController extends BaseController
         $this->validation->setRule('feetype', "Fees Type",'required|trim|max_length[20]');
 
         if ($this->validation->withRequest($this->request)->run()) {
-      
+
             $check = $this->common_model->findById('dbt_fees', array('level' => $this->request->getPost('level'), 'currency_symbol' => $this->request->getPost('coin_id')));
 
             if(!empty($check)){
@@ -263,8 +264,8 @@ class SettingController extends BaseController
     }
 
     public function delete_fees_setting($id = null)
-    { 
-       
+    {
+
         if ($this->common_model->delete('dbt_fees', array('id' => $id))){
             $this->session->setFlashdata('message', display('delete_successfully'));
         } else {
@@ -296,7 +297,7 @@ class SettingController extends BaseController
         $this->validation->setRule('upper', "Limit Amount",'required|trim|max_length[50]');
 
         if ($this->validation->withRequest($this->request)->run()) {
-       
+
                 $check = $this->common_model->findById('dbt_transaction_setup', array('trntype' => $this->request->getPost('trntype'), 'acctype' => $this->request->getPost('acctype'), 'currency_symbol' => $this->request->getPost('currency_symbol')));
 
                 if(!empty($check)){
@@ -328,8 +329,8 @@ class SettingController extends BaseController
     }
 
     public function delete_transaction($id = null)
-    { 
-       
+    {
+
         if ($this->common_model->delete('dbt_transaction_setup', array('id' => $id))){
 
             $this->session->setFlashdata('message', display('delete_successfully'));
@@ -350,7 +351,7 @@ class SettingController extends BaseController
     }
 
     public function addLanguage()
-    { 
+    {
         $dbforge = \Config\Database::forge();
 
         $language = preg_replace('/[^a-zA-Z0-9_]/', '', $this->request->getPost('language',FILTER_SANITIZE_STRING));
@@ -364,12 +365,12 @@ class SettingController extends BaseController
                     $language => [
                         'type' => 'TEXT'
                     ]
-                ]); 
+                ]);
 
                 $this->session->setFlashdata('message', 'Language added successfully');
                 return redirect()->route('backend/setting/language');
 
-            } 
+            }
 
         } else {
 
@@ -392,9 +393,9 @@ class SettingController extends BaseController
         return $this->template->admin_layout($data);
     }
 
-    public function addPhrase() {  
+    public function addPhrase() {
 
-        $lang = $this->request->getPost('phrase', FILTER_SANITIZE_STRING); 
+        $lang = $this->request->getPost('phrase', FILTER_SANITIZE_STRING);
 
         if (sizeof($lang) > 0) {
 
@@ -408,25 +409,25 @@ class SettingController extends BaseController
                         $value = strtolower($value);
 
                         if (!empty($value)) {
-                            
+
                             $num_rows = $this->common_model->findById('language', array('phrase' => $value));
 
-                            if (empty($num_rows)) { 
+                            if (empty($num_rows)) {
 
-                                $this->common_model->save('language',['phrase' => $value]); 
+                                $this->common_model->save('language',['phrase' => $value]);
                                 $this->session->setFlashdata('message', 'Phrase added successfully');
 
                             } else {
 
                                 $this->session->setFlashdata('exception', 'Phrase already exists!');
                             }
-                        }   
-                    }  
+                        }
+                    }
 
                     return redirect()->route('backend/setting/phrase');
-                }  
+                }
             }
-        } 
+        }
 
         $this->session->setFlashdata('exception', 'Please try again');
         return redirect()->route('backend/setting/phrase');
@@ -458,7 +459,7 @@ class SettingController extends BaseController
 
     public function search($segment="")
     {
-        
+
         $this->validation->setRule('search_box', "Search box",'required|trim|max_length[200]');
         if ($this->validation->withRequest($this->request)->run()) {
 
@@ -473,7 +474,7 @@ class SettingController extends BaseController
 
                     continue;
                 }
-                
+
                 $search_result = $this->common_model->findById('language', array('phrase' => $search_box));
 
                 if($search_result){
@@ -501,7 +502,7 @@ class SettingController extends BaseController
         return redirect()->to(base_url("/backend/setting/edit-phrase/".$segment));
     }
 
-    public function addLebel() { 
+    public function addLebel() {
 
         $language = $this->request->getPost('language', FILTER_SANITIZE_STRING);
         $phrase   = $this->request->getPost('phrase', FILTER_SANITIZE_STRING);
@@ -519,13 +520,13 @@ class SettingController extends BaseController
 
                         $datau = array($language => $lang[$i]);
                         $this->common_model->update('language', $datau, array('phrase' => $phrase[$i]));
-                    }  
+                    }
 
                     $this->session->setFlashdata('message', display('label_added_successfully'));
                     return redirect()->to(base_url("/backend/setting/edit-phrase/".$language));
-                }  
+                }
             }
-        } 
+        }
 
         $this->session->setFlashdata('exception', 'Please try again');
         return redirect()->to(base_url("/backend/setting/edit-phrase/".$language));
@@ -536,20 +537,20 @@ class SettingController extends BaseController
         $data['payment_gateway'] = $this->common_model->findAll('payment_gateway', array(), 'id', 'asc', 15, 0);
 
         $data['module'] = "Settings";
-        $data['page']   = 'payment_gateway/list'; 
+        $data['page']   = 'payment_gateway/list';
         return $this->template->layout($data);
     }
 
 
     public function update_payment_gateway($id = null)
-    { 
+    {
         $data['title']  = display('add_payment_gateway');
         $data_value = "";
 
         if ($this->request->getPost('identity')=='bitcoin') {
 
             $this->validation->setRule('status', display('status'),'required|max_length[10]');
-            
+
             $public_key = serialize(array(
 
                 $this->request->getPost('key1', FILTER_SANITIZE_STRING)  => $this->request->getPost('public_key', FILTER_SANITIZE_STRING),
@@ -625,7 +626,7 @@ class SettingController extends BaseController
             $ipn_secret         = $this->request->getPost('ipn_secret', FILTER_SANITIZE_STRING);
             $debug_email        = $this->request->getPost('debug_email', FILTER_SANITIZE_STRING);
             $coinpayment_wtdraw = $this->request->getPost('coinpayment_wtdraw', FILTER_SANITIZE_STRING);
-            
+
             if($this->request->getPost('debuging_active', FILTER_SANITIZE_STRING)){
 
                 $debuging_active = 1;
@@ -695,14 +696,14 @@ class SettingController extends BaseController
         $data['countrys'] = $this->common_model->findAll('dbt_country', array(), 'id', 'asc', 300, 0);
 
         $data['module'] = "Settings";
-        $data['page']   = 'payment_gateway/form'; 
+        $data['page']   = 'payment_gateway/form';
         return $this->template->layout($data);
     }
 
 
     public function affiliation()
-    {  
-        
+    {
+
         $this->validation->setRule('commission', display('commission'),'max_length[100]|required|trim');
         $this->validation->setRule('type', display('type'),'max_length[11]|required|trim');
         $this->validation->setRule('status', display('status'),'max_length[1]|required|trim');
@@ -714,7 +715,7 @@ class SettingController extends BaseController
             'type'          => $this->request->getPost('type', FILTER_SANITIZE_STRING),
             'status'        => $this->request->getPost('status', FILTER_SANITIZE_STRING)
         );
-        
+
         if($this->request->getMethod() == 'post'){
 
             if ($this->validation->withRequest($this->request)->run())
@@ -738,7 +739,7 @@ class SettingController extends BaseController
         }
 
         $data['affiliation'] = $this->common_model->findById('dbt_affiliation', array('id' => 1));
-      
+
         $data['content']  = $this->BASE_VIEW . '\affiliation\affiliation';
         return $this->template->admin_layout($data);
     }
@@ -757,7 +758,7 @@ class SettingController extends BaseController
     }
 
     public function update_external_api($id = null)
-    { 
+    {
 
         $this->validation->setRule('name', display('name'),'required|max_length[50]');
         $this->validation->setRule('api_key', 'API Key','required|max_length[100]');
@@ -796,8 +797,8 @@ class SettingController extends BaseController
 
             } else {
 
-                $this->session->setFlashdata("exception", $this->validation->listErrors()); 
-                return redirect()->to(base_url("/backend/setting/update-external-api/".$id)); 
+                $this->session->setFlashdata("exception", $this->validation->listErrors());
+                return redirect()->to(base_url("/backend/setting/update-external-api/".$id));
 
             }
 
@@ -806,7 +807,7 @@ class SettingController extends BaseController
             if(!empty($id)) {
 
                 $data['apis']  = $this->common_model->findById('external_api_setup', array('id' => $id));
-            } 
+            }
         }
 
         $data['content']  = $this->BASE_VIEW . '\external_api\form';
@@ -817,7 +818,7 @@ class SettingController extends BaseController
     |----------------------------
     |   email Gateway
     |----------------------------
-    */   
+    */
     public function email_gateway()
     {
 
@@ -831,7 +832,7 @@ class SettingController extends BaseController
     |----------------------------
     |   SMS Gateway
     |----------------------------
-    */   
+    */
     public function sms_gateway()
     {
 
@@ -852,11 +853,11 @@ class SettingController extends BaseController
         $sms = $this->request->getPost('es_id', FILTER_SANITIZE_STRING);
         $pass = '';
         $password = $this->common_model->findById('email_sms_gateway', array('es_id' => 2));
-        
+
         if($password->password == base64_decode($this->request->getPost('password', FILTER_SANITIZE_STRING))){
 
            $pass = $password->password;
-           
+
         } else {
 
             $pass = $this->request->getPost('password', FILTER_SANITIZE_STRING);
@@ -873,9 +874,9 @@ class SettingController extends BaseController
             'api'         => $this->request->getPost('api', FILTER_SANITIZE_STRING)
         );
 
-        $this->common_model->update('email_sms_gateway', $data, array('es_id' => $sms));     
+        $this->common_model->update('email_sms_gateway', $data, array('es_id' => $sms));
         $this->session->setFlashdata('message',display('update_successfully'));
-        return redirect()->to(base_url("/backend/setting/sms-gateway")); 
+        return redirect()->to(base_url("/backend/setting/sms-gateway"));
     }
 
     public function update_email_gateway()
@@ -883,7 +884,7 @@ class SettingController extends BaseController
         $email = $this->request->getPost('es_id', FILTER_SANITIZE_STRING);
         $pass = '';
         $password = $this->common_model->findById('email_sms_gateway', array('es_id' => 2));
-        
+
         if($password->password == base64_decode($this->request->getPost('email_password', FILTER_SANITIZE_STRING))){
 
            $pass = $password->password;
@@ -907,14 +908,14 @@ class SettingController extends BaseController
 
         $this->common_model->update('email_sms_gateway', $data, array('es_id' => $email));
         $this->session->setFlashdata('message',display('update_successfully'));
-        return redirect()->to(base_url("/backend/setting/email-gateway")); 
+        return redirect()->to(base_url("/backend/setting/email-gateway"));
     }
 
     /*
 |----------------------------
 |   Email Testing Action
 |----------------------------
-*/ 
+*/
     public function test_email()
     {
         $this->validation->setRule('email_to','Email','required|valid_email');
@@ -947,7 +948,7 @@ class SettingController extends BaseController
             $this->session->setFlashdata("exception", $this->validation->listErrors());
         }
 
-        return redirect()->to(base_url("/backend/setting/email-gateway")); 
+        return redirect()->to(base_url("/backend/setting/email-gateway"));
     }
 
     public function test_sms()
@@ -961,7 +962,7 @@ class SettingController extends BaseController
             #----------------------------
             #      SMS Test
             #----------------------------
-        
+
             $mobile_num     = $this->request->getPost('mobile_num');
             $test_message   = $this->request->getPost('test_message');
 
@@ -970,7 +971,7 @@ class SettingController extends BaseController
                 try {
 
                     $smssend = $this->sms_lib->send(array(
-                        'to'        => $mobile_num, 
+                        'to'        => $mobile_num,
                         'message'   => $test_message
                     ));
                 }
@@ -1009,7 +1010,7 @@ class SettingController extends BaseController
             $this->session->setFlashdata("exception", $this->validation->listErrors());
         }
 
-        return redirect()->to(base_url("/backend/setting/sms-gateway")); 
+        return redirect()->to(base_url("/backend/setting/sms-gateway"));
     }
 
     public function email_sms_template_list()
@@ -1042,8 +1043,8 @@ class SettingController extends BaseController
                     'template_en' => $this->request->getPost('template_en', FILTER_SANITIZE_STRING),
                     'template_fr' => $this->request->getPost('template_fr', FILTER_SANITIZE_STRING),
                 );
-               
-                $this->common_model->update('dbt_sms_email_template', $datasave, array('id' => $sid));     
+
+                $this->common_model->update('dbt_sms_email_template', $datasave, array('id' => $sid));
                 $this->session->setFlashdata('message',display('update_successfully'));
 
             } else {
@@ -1051,7 +1052,7 @@ class SettingController extends BaseController
                 $this->session->setFlashdata("exception", $this->validation->listErrors());
             }
 
-            return redirect()->to(base_url("/backend/setting/email-sms-template")); 
+            return redirect()->to(base_url("/backend/setting/email-sms-template"));
         }
 
         $data['template'] = $this->common_model->findById('dbt_sms_email_template', array('id' => $id));
@@ -1073,7 +1074,7 @@ class SettingController extends BaseController
             'method' => 'sms'
         );
         $data['sms']=$this->common_model->findById('sms_email_send_setup',$wheresms);
-       
+
         $data['content']  = $this->BASE_VIEW . '\settings\email_and_sms_setting';
         return $this->template->admin_layout($data);
     }
@@ -1085,7 +1086,7 @@ class SettingController extends BaseController
         $this->validation->setRule('deposit', display('deposit'),'numeric|permit_empty');
         $this->validation->setRule('transfer', display('transfer'),'numeric|permit_empty');
         $this->validation->setRule('withdraw', display('withdraw'),'numeric|permit_empty');
-       
+
         if($this->validation->withRequest($this->request)->run())
         {
             $email = $this->request->getVar('email');
@@ -1121,8 +1122,8 @@ class SettingController extends BaseController
                 $this->session->setFlashdata('exception', $error);
             }
         }
-        
+
         return  redirect()->to(base_url('backend/setting/email-sms-settings'));
-                
+
     }
 }

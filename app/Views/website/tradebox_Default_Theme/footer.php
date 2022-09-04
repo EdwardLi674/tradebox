@@ -88,6 +88,7 @@
         </div>
     </div>
 </div><!-- /.secondary-footer -->
+<input type="hidden" id="site_url" value="<?php echo site_url(); ?>">
 </footer><!-- /.End of footer -->
 <!-- Optional JavaScript -->
 <?php

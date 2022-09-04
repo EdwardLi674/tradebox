@@ -986,6 +986,78 @@ if (path == "transfer-confirm") {
 }
 
 $(document).ready(function () {
+  // clicking the "See more button" of homepage
+  $("#see_more_cards").on("click", function () {
+    $("#see_more_cards").css("display", "none");
+    $("#see_more_loading").css("display", "block");
+    var site_url = $("#site_url").val();
+    $.ajax({
+      url: BDTASK.getSiteAction("more-token-cards"),
+      type: "GET", //the way you want to send data to your URL
+      success: function (data) {
+        if (data != "") {
+          const rest_tokens = JSON.parse(data);
+          let ele = "";
+          for (let token of rest_tokens) {
+            const article_link = token.article_id
+              ? `
+                <a href="${site_url}article-token/${token.id}">
+              `
+              : "";
+            ele += `
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="imagine-card">
+                    ${article_link}
+                      <div class="imagine-card-head">
+                          <div class="imagine-card-logo">
+                              <img src="${site_url}/public/${
+              token.image
+            }" alt="${token.full_name}">
+                          </div>
+                          <div>
+                              <div class="imagine-card-name">${
+                                token.symbol
+                              }</div>
+                              <div class="imagine-card-date">${
+                                token.full_name
+                              }</div>
+                          </div>
+                      </div>
+                      <div class="imagine-card-bottom">
+                          <div class="imagine-card-chart">
+                              <span class="bdtasksparkline value_graph" id="GRAPH_${
+                                token.symbol
+                              }"></span>
+                          </div>
+                          <div>
+                              <div class="imagine-card-change">
+                                  <span class="Percent" id="CHANGE24HOURPCT_${
+                                    token.symbol
+                                  }"></span>
+                                  <div class="imagine-card-points">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    ${token.article_id ? "</a>" : ""}
+                </div>
+              </div>
+            `;
+          }
+          $("#token_cards_list").append(ele);
+          $("#see_more_loading").css("display", "none");
+        } else {
+          swal({
+            title: "Wops!",
+            text: "Error Message",
+            type: "error",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      },
+    });
+  });
   // disabline mouse scrolling of amount input
   $("input[name=amount]").on("mousewheel", function () {
     this.blur();

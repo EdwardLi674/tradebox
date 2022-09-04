@@ -89,7 +89,7 @@
 <!-- /.End of tricker -->
 <div class="price-spike">
     <div class="container">
-        <div class="row">
+        <div class="row" id="token_cards_list">
             <?php foreach ($coin as $key => $value) { ?>
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="imagine-card">
@@ -124,6 +124,18 @@
             </div>
             <?php } ?>
         </div>
+        <?php
+        if ($number_token_cards < $number_all_tokens) {
+        ?>
+            <div class="d-flex justify-content-center">
+                <div class="text-primary" style="text-decoration: underline; cursor: pointer" id="see_more_cards">More Listed Tokens</div>
+                <div class="spinner-border text-primary spinner-border-sm" role="status" style="display:none" id="see_more_loading">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
     </div>
 </div>
 <!--  ./End of price spike -->

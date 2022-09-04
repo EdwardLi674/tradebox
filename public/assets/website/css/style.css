@@ -312,7 +312,7 @@ output {
   line-height: 27px;
   color: #fff;
   letter-spacing: 5px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 .animation-slide.owl-theme .owl-nav {
   margin: 0;

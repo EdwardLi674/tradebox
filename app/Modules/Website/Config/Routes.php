@@ -7,7 +7,7 @@
 	$routes->group('', ['namespace' => 'App\Modules\Website\Controllers'], function($subroutes){
 
 		$subroutes->add('', 'HomeController::index');
-
+		$subroutes->add('more-token-cards', 'HomeController::more_tokens');
 
 		$subroutes->add('get-stream', 'HomeController::getStream');
 		$subroutes->add('coingraph-data', 'HomeController::coingraphdata');

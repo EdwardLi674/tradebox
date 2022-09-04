@@ -63,14 +63,14 @@
                                     <div class="col-sm-8">
                                         <textarea name="office_time" class="form-control"  placeholder="<?php echo display('office_time') ?>" maxlength="255" rows="5"><?php echo htmlspecialchars_decode($setting->office_time) ?></textarea>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group row">
                                     <label for="footer_text" class="col-sm-4 col-form-label font-weight-600"><?php echo display('footer_text') ?></label>
                                     <div class="col-sm-8">
                                         <textarea name="footer_text" class="form-control"  placeholder="Footer Text" maxlength="140" rows="5"><?php echo esc($setting->footer_text) ?></textarea>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                             <div class="col-sm-6">
                                 <?php if(!empty($setting->favicon)) {  ?>
@@ -133,23 +133,29 @@
                                     <div class="col-sm-8">
                                         <?php echo form_dropdown('language',$languageList,$setting->language, 'class="form-control"') ?>
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="form-group row">
                                     <label for="left_to_right" class="col-sm-4 col-form-label font-weight-600"><?php echo display('admin_align') ?></label>
                                     <div class="col-sm-8">
                                         <?php echo form_dropdown('site_align', array('LTR' => display('left_to_right'), 'RTL' => display('right_to_left')) ,$setting->site_align, 'class="form-control"') ?>
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="form-group row">
                                     <label for="latitude" class="col-sm-4 col-form-label font-weight-600"><?php echo display('latitudelongitude') ?></label>
                                     <div class="col-sm-8">
                                         <input name="latitude" type="text" class="form-control" id="latitude" placeholder="<?php echo display('latitudelongitude') ?>"  value="<?php echo esc($setting->latitude) ?>" >
                                     </div>
                                 </div>
-                                
+                                <div class="form-group row">
+                                    <label for="number_token_cards" class="col-sm-4 col-form-label font-weight-600"><?php echo display('number_token_cards') ?></label>
+                                    <div class="col-sm-8">
+                                        <input name="number_token_cards" type="number" class="form-control" id="number_token_cards" placeholder="<?php echo display('number_token_cards') ?>"  value="<?php echo esc($setting->number_token_cards) ?>" >
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="footer_text" class="col-sm-2 col-form-label font-weight-600"></label>
                             <div class="col-sm-10">
